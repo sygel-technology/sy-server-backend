@@ -1,2 +1,12 @@
 # sy-server-backend
-Server ORM extensions, new fields...
+Odoo Server Backend Addons
+
+[//]: # (addons)
+
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[](/) | | Allow... .
+
+[//]: # (end addons)
