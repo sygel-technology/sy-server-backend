@@ -2,8 +2,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Add External ID to Account",
-    "summary": "Add External ID field to Account",
+    "name": "Add External ID",
+    "summary": "Add External ID field",
     "version": "11.0.1.0.0",
     "category": "Accounting",
     "website": "https://www.sygel.es",
@@ -13,5 +13,6 @@
     "installable": True,
     "depends": [
         "base",
+        "account"
     ],
 }

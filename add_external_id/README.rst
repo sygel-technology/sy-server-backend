@@ -2,11 +2,12 @@
 	:target: http://www.gnu.org/licenses/agpl
 	:alt: License: AGPL-3
 
-==========================
-Add External ID to Account
-==========================
+===============
+Add External ID
+===============
 
-This module adds an External ID field to the account.account model.
+This module adds an External ID field to:
+* account.account model.
 
 
 Installation
@@ -29,10 +30,6 @@ Just install the module
 
 ROADMAP
 =======
-
-[ Enumerate known caveats and future potential improvements.
-  It is mostly intended for end-users, and can also help
-  potential new contributors discovering new features to implement. ]
 
 * ...
 
@@ -61,6 +58,7 @@ Contributors
 ~~~~~~~~~~~~
 
 * Manuel Regidor Gonzalez <manuel.regidor@sygel.es>
+* Valentin Vinagre <valentin.vinagre@sygel.es>
 
 
 Maintainer
