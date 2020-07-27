@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Valentin Vinagre <valentin.vinagre@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="_assets_helpers" inherit_id="web._assets_helpers">
+        <xpath expr="//link[@href='/web/static/lib/bootstrap/scss/_variables.scss']" position="before">
+            <link rel="stylesheet" type="text/scss" href="/reports_font_size/static/src/scss/_variables.scss"/>
+        </xpath>
+    </template>
+</odoo>
