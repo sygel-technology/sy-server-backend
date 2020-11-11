@@ -19,13 +19,28 @@ class MailMail(models.Model):
                 # those partners are obtained, who do not have a user and
                 # if they do it must be a portal, we exclude internal
                 # users of the system.
-                partners = obj.message_follower_ids.mapped('partner_id').filtered(
+                partners_len = len(obj.message_follower_ids.mapped('partner_id').filtered(
                     lambda x: not x.user_ids or group_portal in x.user_ids.groups_id
-                    )
-                if len(partners) > 1:
+                    ))
+                if partners_len > 1:
+                    # get partners
+                    partners = None
+                    cc_internal = True
+                    # else get company in object
+                    if hasattr(obj, "company_id") and obj.company_id:
+                        cc_internal = obj.company_id.show_internal_users_cc
+                    # get company in user
+                    elif mail_id.env and mail_id.env.user and mail_id.env.user.company_id:
+                        cc_internal = self.env.user.company_id.show_internal_users_cc
+                    if cc_internal:
+                        partners = obj.message_follower_ids.mapped('partner_id')
+                    else:
+                        partners = obj.message_follower_ids.mapped('partner_id').filtered(
+                            lambda x: not x.user_ids or group_portal in x.user_ids.groups_id
+                        )
+                    # get names and emails
                     final_cc = None
                     mails = ""
-                    # get names and emails
                     for p in partners:
                         mails += "%s &lt;%s&gt;, " % (p.name, p.email)
                     # join texts

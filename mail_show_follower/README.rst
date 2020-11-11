@@ -26,7 +26,7 @@ Configuration
 
 To configure this module, you need to:
 
-#. Nothing.
+#. Go General settings/Discuss/Show Internal Users CC and set if want to show or not internal users in cc details.
 
 
 Usage

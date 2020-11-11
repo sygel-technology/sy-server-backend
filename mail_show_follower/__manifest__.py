@@ -12,7 +12,9 @@
     "application": False,
     "installable": True,
     "depends": [
-        "mail",
+        "mail"
     ],
-    "data": [],
+    "data": [
+        "views/res_config_settings.xml"
+    ],
 }
