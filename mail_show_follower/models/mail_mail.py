@@ -33,7 +33,9 @@ class MailMail(models.Model):
                     elif mail_id.env and mail_id.env.user and mail_id.env.user.company_id:
                         cc_internal = self.env.user.company_id.show_internal_users_cc
                     if cc_internal:
-                        partners = obj.message_follower_ids.mapped('partner_id')
+                        partners = obj.message_follower_ids.mapped('partner_id').filtered(
+                            lambda x: not x.user_ids or x.user_ids.show_in_cc
+                        )
                     else:
                         partners = obj.message_follower_ids.mapped('partner_id').filtered(
                             lambda x: not x.user_ids or group_portal in x.user_ids.groups_id
