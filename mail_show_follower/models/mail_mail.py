@@ -19,8 +19,14 @@ class MailMail(models.Model):
                 # those partners are obtained, who do not have a user and
                 # if they do it must be a portal, we exclude internal
                 # users of the system.
-                partners_len = len(obj.message_follower_ids.mapped('partner_id').filtered(
-                    lambda x: not x.user_ids or group_portal in x.user_ids.groups_id
+                partners_obj = obj.message_follower_ids.mapped('partner_id')
+                # internal partners
+                user_partner_ids = self.env['res.users'].search([
+                    ('active', 'in', (True, False)),
+                    ('show_in_cc', '=', False),
+                ]).filtered(lambda x: not group_portal in x.groups_id).mapped('partner_id').ids
+                partners_len = len(partners_obj.filtered(
+                    lambda x: x.id not in user_partner_ids and (not x.user_ids or group_portal in x.user_ids.groups_id)
                     ))
                 if partners_len > 1:
                     # get partners
@@ -33,12 +39,12 @@ class MailMail(models.Model):
                     elif mail_id.env and mail_id.env.user and mail_id.env.user.company_id:
                         cc_internal = self.env.user.company_id.show_internal_users_cc
                     if cc_internal:
-                        partners = obj.message_follower_ids.mapped('partner_id').filtered(
-                            lambda x: not x.user_ids or x.user_ids.show_in_cc
+                        partners = partners_obj.filtered(
+                            lambda x: x.id not in user_partner_ids and (not x.user_ids or x.user_ids.show_in_cc)
                         )
                     else:
-                        partners = obj.message_follower_ids.mapped('partner_id').filtered(
-                            lambda x: not x.user_ids or group_portal in x.user_ids.groups_id
+                        partners = partners_obj.filtered(
+                            lambda x: x.id not in user_partner_ids and (not x.user_ids or group_portal in x.user_ids.groups_id)
                         )
                     # get names and emails
                     final_cc = None
