@@ -36,7 +36,7 @@ class MailMail(models.Model):
                     if hasattr(obj, "company_id") and obj.company_id:
                         cc_internal = obj.company_id.show_internal_users_cc
                     # get company in user
-                    elif mail_id.env and mail_id.env.user and mail_id.env.user.company_id:
+                    elif mail.env and mail.env.user and mail.env.user.company_id:
                         cc_internal = self.env.user.company_id.show_internal_users_cc
                     if cc_internal:
                         partners = partners_obj.filtered(
