@@ -41,7 +41,7 @@ class MailMail(models.Model):
                             cc_internal = self.env.user.company_id.show_internal_users_cc
                         if cc_internal:
                             partners = partners_obj.filtered(
-                                lambda x: x.id not in user_partner_ids and (not x.user_ids or x.user_ids.show_in_cc)
+                                lambda x: x.id not in user_partner_ids and (not x.user_ids or (x.user_ids and x.user_ids[0].show_in_cc))
                             )
                         else:
                             partners = partners_obj.filtered(
