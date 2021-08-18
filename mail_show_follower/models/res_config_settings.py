@@ -12,3 +12,9 @@ class ResConfigSettings(models.TransientModel):
         related='company_id.show_internal_users_cc',
         readonly=False
     )
+    cc_blocked_models = fields.Many2many(
+        string='CC Blocked Models',
+        comodel_name="ir.model",
+        related='company_id.cc_blocked_models',
+        readonly=False
+    )

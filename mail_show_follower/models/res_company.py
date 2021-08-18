@@ -11,3 +11,7 @@ class ResCompany(models.Model):
         string='Show Internal Users CC',
         default=True
     )
+    cc_blocked_models = fields.Many2many(
+        string='CC Blocked Models',
+        comodel_name="ir.model"
+    )
