@@ -17,6 +17,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">CC Blocked Models</span>
+                        <span class="fa fa-lg fa-building-o" title="CC Blocked Models" aria-label="Values set here are company-specific." groups="base.group_multi_company" />
+                        <div class="text-muted">
+                            Do not show CC when emails are sent from the following models
+                        </div>
+                        <div class="content-group">
+                            <div class="mt16 row">
+                                <label for="cc_blocked_models" string="Models" class="col-3 col-lg-3 o_light_label"/>
+                                <field name="cc_blocked_models" class="oe_inline" widget="many2many_tags"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </field>
     </record>
