@@ -4,7 +4,7 @@
 {
     "name": "Reports Font Size",
     "summary": "This module change the font size base of reports.",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Reports",
     "website": "https://www.sygel.es",
     "author": "Sygel",
