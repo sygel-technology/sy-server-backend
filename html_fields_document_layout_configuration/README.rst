@@ -28,9 +28,8 @@ To configure this module, you need to:
 Usage
 =====
 
-To use this module, you need to:
+In the form view of "Configure Document Layout" click on the </> button to enable or disable the html widget in the html fields.
 
-#. Go to ...
 
 ROADMAP
 =======
@@ -45,10 +44,10 @@ To fix it:
 Bug Tracker
 ===========
 
-Bugs and errors are managed in `issues of GitHub <https://github.com/sygel/REPOSITORY/issues>`_.
+Bugs and errors are managed in `issues of GitHub <https://github.com/sygel/sy-server-backend/issues>`_.
 In case of problems, please check if your problem has already been
 reported. If you are the first to discover it, help us solving it by indicating
-a detailed description `here <https://github.com/sygel/REPOSITORY/issues/new>`_.
+a detailed description `here <https://github.com/sygel/sy-server-backend/issues/new>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -74,6 +73,6 @@ Maintainer
 This module is maintained by Sygel.
 
 
-This module is part of the `Sygel/REPOSITORY <https://github.com/sygel-technology/repository>`_.
+This module is part of the `Sygel/sy-server-backend <https://github.com/sygel-technology/sy-server-backend>`_.
 
 To contribute to this module, please visit https://github.com/sygel-technology.
