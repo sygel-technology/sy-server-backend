@@ -13,8 +13,10 @@ class MailMail(models.Model):
         group_internal = self.env.ref('base.group_user')
         for mail_id in self.ids:
             mail = self.browse(mail_id)
-            obj = self.env[mail.model].browse(mail.res_id)
-            accepted_model = True
+            accepted_model = False
+            if mail.model and mail.res_id:
+                obj = self.env[mail.model].browse(mail.res_id)
+                accepted_model = True
             if mail and mail.model:
                 if hasattr(obj, "company_id") and obj.company_id:
                     accepted_model = mail.model not in obj.company_id.cc_blocked_models.mapped('model')
