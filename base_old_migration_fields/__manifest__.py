@@ -4,14 +4,14 @@
 {
     "name": "Base Old Migration Fields",
     "summary": "Base Old Migration Fields",
-    "version": "16.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Custom",
     "website": "https://www.sygel.es",
     "author": "Sygel, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
-    "depends": [],   
+    "depends": [],
     "data": [
         "security/base_old_migration_fields_security.xml",
     ],

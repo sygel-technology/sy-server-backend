@@ -59,6 +59,7 @@ Contributors
 ~~~~~~~~~~~~
 
 * Ángel García de la Chica Herrera <angel.garcia@sygel.es>
+* Alberto Martínez <alberto.martínez@sygel.es>
 
 Maintainer
 ~~~~~~~~~~
