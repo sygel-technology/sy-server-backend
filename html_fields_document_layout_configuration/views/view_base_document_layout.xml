@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2022 Angel Garcia de la Chica Herrera <angel.garcia@sygel.es>
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record id="html_fields_view_base_document_layout" model="ir.ui.view">
         <field name="name">html.fields.view.base.document.layout</field>
         <field name="model">base.document.layout</field>
-        <field name="inherit_id" ref="web.view_base_document_layout"/>
+        <field name="inherit_id" ref="web.view_base_document_layout" />
         <field name="arch" type="xml">
              <xpath expr="//field[@name='report_header']" position="attributes">
                 <attribute name="widget">html</attribute>
@@ -25,4 +25,3 @@
         </field>
     </record>
 </odoo>
-
