@@ -2,24 +2,24 @@
 # Copyright (c) 2020 Sygel (http://www.sygel.es)
 
 {
-    'name': 'File download',
-    'version': '15.0.1.0.0',
-    'sequence': 14,
-    'summary': 'Download file',
-    'description': """
+    "name": "File download",
+    "version": "15.0.1.0.0",
+    "sequence": 14,
+    "summary": "Download file",
+    "description": """
     Let's you call a wizard to download any file.
     """,
-    'author': 'Sygel',
+    "author": "Sygel",
     "license": "AGPL-3",
-    'website': 'https://www.sygel.es',
-    'category': 'report',
+    "website": "https://github.com/sygel-technology/sy-server-backend",
+    "category": "report",
     "depends": [
-        'base',
+        "base",
     ],
-    'data': [
-        'security/ir.model.access.csv',
-        'wizard/download_file_view.xml',
+    "data": [
+        "security/ir.model.access.csv",
+        "wizard/download_file_view.xml",
     ],
-    'installable': True,
-    'application': False,
+    "installable": True,
+    "application": False,
 }
