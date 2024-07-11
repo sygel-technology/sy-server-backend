@@ -2,54 +2,44 @@
 # Copyright (c) 2020 Sygel (http://www.sygel.es)
 
 import base64
-from odoo import models, fields
+
+from odoo import fields, models
 
 
 class FileDownloadModel(models.AbstractModel):
-    _name = 'file.download.model'
-    _description = 'file.download.model'
+    _name = "file.download.model"
+    _description = "file.download.model"
 
-    data = fields.Binary(
-        string='File',
-        readonly=True
-    )
-    name = fields.Char(
-        string='File name',
-        readonly=True
-    )
-    comments = fields.Text(
-        string='Comments'
-    )
+    data = fields.Binary(string="File", readonly=True)
+    name = fields.Char(string="File name", readonly=True)
+    comments = fields.Text(string="Comments")
 
     def get_filename(self):
-        return ''
+        return ""
 
     def get_content(self):
-        return ''
+        return ""
 
     def warning(self, mensaje):
         return {
-            'type': 'ir.actions.client',
-            'tag': 'action_warn',
-            'name': ('Aviso'),
-            'params': {
-               'title': 'Error',
-               'text': mensaje,
-               'sticky': True}
-            }
+            "type": "ir.actions.client",
+            "tag": "action_warn",
+            "name": ("Aviso"),
+            "params": {"title": "Error", "text": mensaje, "sticky": True},
+        }
 
     def set_file(self):
         name = self.get_filename()
         out = base64.encodebytes(self.get_content())
-        self.write({'data': out, 'name': name})
-        view = self.env.ref('file_download.wizard_file_download')
+        self.write({"data": out, "name": name})
+        view = self.env.ref("file_download.wizard_file_download")
         return {
-            'type': 'ir.actions.act_window',
-            'res_model': self._name,
-            'res_id': self.id,
-            'views': [(view.id, 'form')],
-            'view_id': view.id,
-            'view_mode': 'form',
-            'view_mode': 'form',
-            'target': 'new',
+            "type": "ir.actions.act_window",
+            "res_model": self._name,
+            "res_id": self.id,
+            "views": [(view.id, "form")],
+            "view_id": view.id,
+            "view_mode": "form",
+            "view_mode": "form",
+            "target": "new",
         }
