@@ -1,0 +1,11 @@
+[project]
+name = "base_old_migration_fields"
+version = "16.0.20240909.0"
+dependencies = [
+    "odoo-addon-base_old_migration_fields>=16.0dev,<16.1dev",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 16.0",
+]
