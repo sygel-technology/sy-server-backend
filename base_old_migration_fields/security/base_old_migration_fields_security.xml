@@ -2,10 +2,7 @@
 <!-- Copyright 2023 Ángel García de la Chica Herrera <angel.garcia@sygel.es>
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo noupdate="1">
-    <record
-        id="base_old_migration_fields.group_old_migration_fields_manager"
-        model="res.groups"
-    >
+    <record id="group_old_migration_fields_manager" model="res.groups">
         <field name="name">Old Migration Fields Manager</field>
         <field
             name="users"
