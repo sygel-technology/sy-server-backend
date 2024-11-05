@@ -1,5 +1,5 @@
 [project]
-name = "base_old_migration_fields"
+name = "odoo-addons-sygel-technology-sy-server-backend"
 version = "17.0.20241031.0"
 dependencies = [
     "odoo-addon-base_old_migration_fields>=17.0dev,<17.1dev",
