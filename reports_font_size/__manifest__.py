@@ -1,20 +1,20 @@
-# Copyright 2020 Valentin Vinagre <valentin.vinagre@sygel.es>
+# Copyright 2024 Alberto Martínez <alberto.martinez@sygel.es>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-
 {
     "name": "Reports Font Size",
-    "summary": "This module change the font size base of reports.",
-    "version": "13.0.1.0.0",
-    "category": "Reports",
-    "website": "https://www.sygel.es",
-    "author": "Sygel",
+    "summary": "Change reports font size from the document layout configurator",
+    "version": "17.0.1.0.0",
+    "category": "repoting-engine",
+    "website": "https://github.com/sygel-technology/sy-server-backend",
+    "author": "Sygel, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
     "depends": [
-        'web',
+        "web",
     ],
-    'data': [
-        'views/reports_font_size.xml',
-    ],
+    "data": {
+        "templates/report_style_templates.xml",
+        "views/base_document_layout.xml",
+    },
 }
