@@ -1,0 +1,3 @@
+- Valentin Vinagre <valentin.vinagre@sygel.es>
+- Alberto Martínez <alberto.martinez@sygel.es>
+- Harald Panten <harald.panten@sygel.es>
