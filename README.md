@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [base_old_migration_fields](base_old_migration_fields/) | 17.0.1.0.0 |  | Base Old Migration Fields
+[reports_font_size](reports_font_size/) | 17.0.1.0.0 |  | Change reports font size from the document layout configurator
 
 [//]: # (end addons)
 

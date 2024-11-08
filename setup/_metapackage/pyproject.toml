@@ -1,8 +1,9 @@
 [project]
 name = "odoo-addons-sygel-technology-sy-server-backend"
-version = "17.0.20241031.0"
+version = "17.0.20241108.0"
 dependencies = [
     "odoo-addon-base_old_migration_fields>=17.0dev,<17.1dev",
+    "odoo-addon-reports_font_size>=17.0dev,<17.1dev",
 ]
 classifiers=[
     "Programming Language :: Python",
