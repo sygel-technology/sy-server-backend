@@ -1,0 +1,115 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* reports_font_size
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-25 12:12+0000\n"
+"PO-Revision-Date: 2024-10-25 14:15+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: reports_font_size
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__header_size_unit__%
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__text_size_unit__%
+msgid "% (of parent element)"
+msgstr "% (del elemento padre)"
+
+#. module: reports_font_size
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__header_size_unit__cm
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__text_size_unit__cm
+msgid "Centimeters"
+msgstr "Centimetros"
+
+#. module: reports_font_size
+#: model:ir.model,name:reports_font_size.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: reports_font_size
+#: model:ir.model,name:reports_font_size.model_base_document_layout
+msgid "Company Document Layout"
+msgstr "Diseño de documentos de la compañía"
+
+#. module: reports_font_size
+#: model:ir.model.fields,field_description:reports_font_size.field_base_document_layout__computed_report_css
+#: model:ir.model.fields,field_description:reports_font_size.field_res_company__computed_report_css
+msgid "Computed Report Css"
+msgstr "Css calculado de informe"
+
+#. module: reports_font_size
+#: model_terms:ir.ui.view,arch_db:reports_font_size.view_base_document_layout_custom_css
+msgid "Custom Css"
+msgstr "Css personalizado"
+
+#. module: reports_font_size
+#: model_terms:ir.ui.view,arch_db:reports_font_size.view_base_document_layout_custom_css
+msgid "Custom Fonts"
+msgstr "Letras customizadas"
+
+#. module: reports_font_size
+#: model_terms:ir.ui.view,arch_db:reports_font_size.view_base_document_layout_custom_css
+msgid "Custom css..."
+msgstr "Css personalizado..."
+
+#. module: reports_font_size
+#: model:ir.model.fields,field_description:reports_font_size.field_base_document_layout__header_size
+#: model:ir.model.fields,field_description:reports_font_size.field_res_company__header_size
+msgid "Header Size"
+msgstr "Tamaño de cabecera"
+
+#. module: reports_font_size
+#: model:ir.model.fields,field_description:reports_font_size.field_base_document_layout__header_size_unit
+#: model:ir.model.fields,field_description:reports_font_size.field_res_company__header_size_unit
+msgid "Header Size Unit"
+msgstr "Unidad de tamaño de cabecera"
+
+#. module: reports_font_size
+#: model:ir.model.fields,field_description:reports_font_size.field_base_document_layout__manual_report_css
+#: model:ir.model.fields,field_description:reports_font_size.field_res_company__manual_report_css
+msgid "Manual Report Css"
+msgstr "Css manual de informe"
+
+#. module: reports_font_size
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__header_size_unit__px
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__text_size_unit__px
+msgid "Pixels"
+msgstr "Píxeles"
+
+#. module: reports_font_size
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__header_size_unit__pt
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__text_size_unit__pt
+msgid "Points"
+msgstr "Puntos"
+
+#. module: reports_font_size
+#: model:ir.model.fields,field_description:reports_font_size.field_base_document_layout__text_size
+#: model:ir.model.fields,field_description:reports_font_size.field_res_company__text_size
+msgid "Text Size"
+msgstr "Tamaño de texto"
+
+#. module: reports_font_size
+#: model:ir.model.fields,field_description:reports_font_size.field_base_document_layout__text_size_unit
+#: model:ir.model.fields,field_description:reports_font_size.field_res_company__text_size_unit
+msgid "Text Size Unit"
+msgstr "Unidad de tamaño de texto"
+
+#. module: reports_font_size
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__header_size_unit__em
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__text_size_unit__em
+msgid "em (font size of parent)"
+msgstr "em (tamaño de fuente del elemento padre)"
+
+#. module: reports_font_size
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__header_size_unit__rem
+#: model:ir.model.fields.selection,name:reports_font_size.selection__res_company__text_size_unit__rem
+msgid "rem (font size of root)"
+msgstr "rem (tamaño de fuente del elemento raíz)"
