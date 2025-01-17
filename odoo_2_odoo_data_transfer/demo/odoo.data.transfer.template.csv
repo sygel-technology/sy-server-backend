@@ -1,0 +1,6 @@
+"id","name","description","local_target_model_id","remote_source_model_name","domain","is_many2one_template"
+"odoo_2_odoo_data_transfer.template_ok","Test template","","Contact","res.partner","[]",""
+"odoo_2_odoo_data_transfer.template_validation","Test template validation error","","Contact","res.partner","[]",""
+"odoo_2_odoo_data_transfer.template_missing","Test template missing error","","Contact","res.partner","[('parent_id', '!=', False)]",""
+"odoo_2_odoo_data_transfer.template_one2many_childs","Test one2many template","","Contact","res.partner","[]","True"
+"odoo_2_odoo_data_transfer.template_one2many","Test one2many","","Contact","res.partner","[('is_company', '=', 'True'), ('child_ids', '!=', False)]",""
