@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+     <record id="odoo_data_transfer_template_line_mixin_view_tree" model="ir.ui.view">
+          <field name="name">odoo.data.transfer.template.line.view.tree</field>
+          <field name="model">odoo.data.transfer.template.line.mixin</field>
+          <field name="arch" type="xml">
+               <tree>
+                    <field name="remote_source_field" />
+                    <field
+                    name="local_target_field_id"
+                    context="{'technical_display_name': True}"
+                />
+                    <field name="local_target_field_type" />
+                    <field
+                    name="remote_identifier_field"
+                    optional="hide"
+                    context="{'technical_display_name': True}"
+                />
+                    <field
+                    name="local_identifier_field_id"
+                    optional="hide"
+                    context="{'technical_display_name': True}"
+                />
+                    <field name="one2many_template_id" optional="hide" />
+               </tree>
+          </field>
+     </record>
+
+
+     <record id="odoo_data_transfer_template_line_mixin_view_form" model="ir.ui.view">
+          <field name="name">odoo.data.transfer.template.line.view.form</field>
+          <field name="model">odoo.data.transfer.template.line.mixin</field>
+          <field name="arch" type="xml">
+               <form>
+                    <group>
+                         <field name="model" invisible="1" />
+                         <field name="remote_source_field" />
+                         <field
+                        name="local_target_field_id"
+                        options="{'no_create': True}"
+                        domain="[('model', '=', model)]"
+                        context="{'technical_display_name': True}"
+                    />
+                         <field name="local_target_field_type" />
+                         <field name="migration_type" invisible="1" />
+                    </group>
+                    <group invisible="migration_type != 'relational'">
+                         <field
+                        name="related_model"
+                        invisible="local_target_field_type != 'many2one_reference'"
+                        required="local_target_field_type == 'many2one_reference'"
+                    />
+                         <field
+                        name="relational_migration_method"
+                        required="migration_type == 'relational'"
+                    />
+                         <field
+                        name="remote_identifier_field"
+                        invisible="not (migration_type == 'relational' and relational_migration_method == 'match_keys' )"
+                        required="migration_type == 'relational' and relational_migration_method == 'match_keys'"
+                    />
+                         <field
+                        name="local_identifier_field_id"
+                        options="{'no_create': True, 'always_reload': True}"
+                        invisible="not (migration_type == 'relational' and relational_migration_method == 'match_keys' )"
+                        required="migration_type == 'relational' and relational_migration_method == 'match_keys'"
+                        domain="[('model', '=', related_model)]"
+                        context="{'technical_display_name': True}"
+                    />
+                         <field
+                        name="manual_id_mappings"
+                        required="migration_type == 'relational'"
+                    />
+                         <field name="skip_relational_errors" />
+                    </group>
+                    <group
+                    name="one2many"
+                    invisible="local_target_field_type != 'one2many'"
+                >
+                         <field
+                        name="one2many_template_id"
+                        required="local_target_field_type == 'one2many'"
+                    />
+                    </group>
+               </form>
+          </field>
+     </record>
+</odoo>
