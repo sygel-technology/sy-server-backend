@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+     <record id="odoo_data_transfer_template_view_tree" model="ir.ui.view">
+          <field name="name">odoo.data.transfer.template.view.tree</field>
+          <field name="model">odoo.data.transfer.template</field>
+          <field name="arch" type="xml">
+               <tree>
+                    <field name="name" />
+                    <field name="remote_source_model_name" />
+                    <field
+                    name="local_target_model_id"
+                    context="{'technical_display_name': True}"
+                />
+               </tree>
+          </field>
+     </record>
+
+     <record id="odoo_data_transfer_template_view_form" model="ir.ui.view">
+          <field name="name">odoo.data.transfer.template.view.form</field>
+          <field name="model">odoo.data.transfer.template</field>
+          <field name="arch" type="xml">
+               <form>
+                    <sheet>
+                         <group>
+                              <field name="name" />
+                              <field name="description" />
+                         </group>
+                         <group>
+                              <field name="remote_source_model_name" />
+                              <field
+                            name="local_target_model_id"
+                            options="{'no_create': True}"
+                            context="{'technical_display_name': True}"
+                        />
+                              <field name="domain" />
+                              <field name="is_many2one_template" />
+                         </group>
+                         <group string="Field Mappings">
+                              <field name="transfer_line_ids" nolabel="1" colspan="2" />
+                         </group>
+                    </sheet>
+               </form>
+          </field>
+     </record>
+
+     <record id="odoo_data_transfer_template_action" model="ir.actions.act_window">
+          <field name="name">Odoo Data Transfer Templates</field>
+          <field name="res_model">odoo.data.transfer.template</field>
+          <field name="view_mode">tree,form</field>
+     </record>
+
+</odoo>

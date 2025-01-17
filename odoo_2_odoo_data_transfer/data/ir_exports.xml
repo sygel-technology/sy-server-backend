@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="default_export" model="ir.exports">
+        <field name="name">Official Export / Import Format</field>
+        <field name="resource">odoo.data.transfer.template</field>
+    </record>
+    <record id="default_export_name" model="ir.exports.line">
+        <field name="name">name</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record id="default_export_description" model="ir.exports.line">
+        <field name="name">description</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record id="default_export_local_target_model_id" model="ir.exports.line">
+        <field name="name">local_target_model_id/id</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record id="default_export_remote_source_model_name" model="ir.exports.line">
+        <field name="name">remote_source_model_name</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record id="default_export_domain" model="ir.exports.line">
+        <field name="name">domain</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record id="default_export_is_many2one_template" model="ir.exports.line">
+        <field name="name">is_many2one_template</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record id="default_export_transfer_line_ids_id" model="ir.exports.line">
+        <field name="name">transfer_line_ids/id</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record
+        id="default_export_transfer_line_ids_remote_source_field"
+        model="ir.exports.line"
+    >
+        <field name="name">transfer_line_ids/remote_source_field</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record
+        id="default_export_transfer_line_ids_local_target_field_id_id"
+        model="ir.exports.line"
+    >
+        <field name="name">transfer_line_ids/local_target_field_id/id</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record
+        id="default_export_transfer_line_ids_relational_migration_method"
+        model="ir.exports.line"
+    >
+        <field name="name">transfer_line_ids/relational_migration_method</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record
+        id="default_export_transfer_line_ids_remote_identifier_field"
+        model="ir.exports.line"
+    >
+        <field name="name">transfer_line_ids/remote_identifier_field</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record
+        id="default_export_transfer_line_ids_local_identifier_field_id_id"
+        model="ir.exports.line"
+    >
+        <field name="name">transfer_line_ids/local_identifier_field_id/id</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record id="default_export_transfer_line_ids_id_mappings" model="ir.exports.line">
+        <field name="name">transfer_line_ids/manual_id_mappings</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record
+        id="default_export_transfer_line_ids_skip_relational_errors"
+        model="ir.exports.line"
+    >
+        <field name="name">transfer_line_ids/skip_relational_errors</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+    <record
+        id="default_export_transfer_line_ids_one2many_template_id"
+        model="ir.exports.line"
+    >
+        <field name="name">transfer_line_ids/one2many_template_id/id</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+        <record
+        id="default_export_transfer_line_ids_related_model"
+        model="ir.exports.line"
+    >
+        <field name="name">transfer_line_ids/related_model</field>
+        <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
+    </record>
+</odoo>
