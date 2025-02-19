@@ -12,7 +12,7 @@ class FileDownloadModel(models.AbstractModel):
 
     data = fields.Binary(string="File", readonly=True)
     name = fields.Char(string="File name", readonly=True)
-    comments = fields.Text(string="Comments")
+    comments = fields.Text()
 
     def get_filename(self):
         return ""
@@ -39,7 +39,6 @@ class FileDownloadModel(models.AbstractModel):
             "res_id": self.id,
             "views": [(view.id, "form")],
             "view_id": view.id,
-            "view_mode": "form",
             "view_mode": "form",
             "target": "new",
         }
