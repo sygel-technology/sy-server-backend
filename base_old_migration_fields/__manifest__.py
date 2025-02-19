@@ -12,7 +12,7 @@
     "license": "AGPL-3",
     "application": False,
     "installable": True,
-    "depends": [],
+    "depends": ["base"],
     "data": [
         "security/base_old_migration_fields_security.xml",
     ],
