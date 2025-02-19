@@ -1,16 +1,17 @@
 # Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, models
+from odoo import models
 
 
 class IrModel(models.Model):
     _inherit = "ir.model"
 
-    @api.depends("name")
-    def _compute_display_name(self):
+    def name_get(self):
         if self.env.context.get("technical_display_name"):
+            res = []
             for rec in self:
-                rec.display_name = rec.model
+                res.append((rec.id, rec.model))
+            return res
         else:
-            return super()._compute_display_name()
+            return super().name_get()

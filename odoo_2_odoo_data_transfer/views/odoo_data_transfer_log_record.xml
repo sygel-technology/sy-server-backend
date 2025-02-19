@@ -24,7 +24,7 @@
                          <field name="local_id" widget="reference" />
                          <field name="remote_id" />
                     </group>
-                    <group invisible="not error_type">
+                    <group attrs="{'invisible': [('error_type', '=', False)]}">
                          <field name="error_type" invisible="1" />
                          <field name="error_msg" />
                     </group>

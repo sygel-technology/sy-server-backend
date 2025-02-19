@@ -21,7 +21,6 @@
         "views/odoo_data_transfer_log_field.xml",
         "views/odoo_data_transfer_log_record.xml",
         "views/odoo_data_transfer_log.xml",
-        "views/odoo_data_transfer_template_line_views.xml",
         "views/odoo_data_transfer_template_views.xml",
         "views/menuitems.xml",
         "wizards/odoo_data_transfer_wizard_line_views.xml",

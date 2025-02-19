@@ -147,7 +147,8 @@ class OdooDataTransferWizard(models.TransientModel):
                                 0,
                                 {
                                     "remote_id": record_dict["id"],
-                                    "local_id": f"{record_id._name},{record_id.id}",
+                                    "local_id": "%s,%s"
+                                    % (record_id._name, record_id.id),
                                 },
                             )
                         ]

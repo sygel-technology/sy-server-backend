@@ -41,7 +41,6 @@ class OdooDataTransferTemplateLog(models.Model):
         comodel_name="odoo.data.transfer.log.field",
         inverse_name="log_id",
     )
-
     transfered_records_ids = fields.One2many(
         string="Transfered Records",
         comodel_name="odoo.data.transfer.log.record",
@@ -67,14 +66,14 @@ class OdooDataTransferTemplateLog(models.Model):
         domain=[("error_type", "=", "other_error")],
     )
     transfered_records_counter = fields.Integer(
-        compute="_compute_transfered_records_counter"
+        compute="_compute_transfered_records_counter", string="Transfer Records"
     )
     record_total_counter = fields.Integer()
 
     @api.depends("transfered_records_ids")
     def _compute_transfered_records_counter(self):
         for rec in self:
-            rec.transfered_records_counter = len(rec.transfered_records_ids)
+            rec.transfered_records_counter = len(rec._get_valid_records())
 
     @api.model
     def _get_transfered_record_log_lines(self, model_id):
@@ -107,7 +106,7 @@ class OdooDataTransferTemplateLog(models.Model):
                         0,
                         {
                             "remote_id": rec.remote_id,
-                            "local_id": f"{rec.local_id._name},{rec.local_id.id}",
+                            "local_id": "%s,%s" % (rec.local_id._name, rec.local_id.id),
                             "error_type": "already_transfered",
                         },
                     )
@@ -126,3 +125,25 @@ class OdooDataTransferTemplateLog(models.Model):
                     rec.state = "error"
             else:
                 rec.state = "transfered"
+
+    def _get_valid_records(self):
+        self.ensure_one()
+        return self.transfered_records_ids.filtered(
+            lambda rec: rec.local_id and rec.local_id.exists()
+        )
+
+    def action_view_transfered_records(self):
+        valid_recs = self._get_valid_records()
+        view = self.env.ref(
+            "odoo_2_odoo_data_transfer.odoo_data_transfer_log_record_tree"
+        ).id
+        return {
+            "type": "ir.actions.act_window",
+            "name": "Transfered Records",
+            "view_type": "tree",
+            "view_mode": "tree",
+            "res_model": "odoo.data.transfer.log.record",
+            "views": [(view, "tree")],
+            "domain": [("id", "in", valid_recs.ids)],
+            "target": "current",
+        }

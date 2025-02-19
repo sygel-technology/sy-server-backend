@@ -44,7 +44,8 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
         )
 
     @mock.patch(
-        "odoo.addons.odoo_2_odoo_data_transfer.wizards.odoo_data_transfer_wizard.OdooXmlrpcWrapper"
+        "odoo.addons.odoo_2_odoo_data_transfer.wizards."
+        "odoo_data_transfer_wizard.OdooXmlrpcWrapper"
     )
     def test_wizard_ok(self, mock_class, *args):
         mock_class.side_effect = (
@@ -66,7 +67,8 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
         self.assertEqual(log_id.transfered_records_counter, 10)
 
     @mock.patch(
-        "odoo.addons.odoo_2_odoo_data_transfer.wizards.odoo_data_transfer_wizard.OdooXmlrpcWrapper"
+        "odoo.addons.odoo_2_odoo_data_transfer.wizards."
+        "odoo_data_transfer_wizard.OdooXmlrpcWrapper"
     )
     def test_validation_error(self, mock_class, *args):
         mock_class.side_effect = (
@@ -85,7 +87,8 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
             wizard.action_validate()
 
     @mock.patch(
-        "odoo.addons.odoo_2_odoo_data_transfer.wizards.odoo_data_transfer_wizard.OdooXmlrpcWrapper"
+        "odoo.addons.odoo_2_odoo_data_transfer.wizards."
+        "odoo_data_transfer_wizard.OdooXmlrpcWrapper"
     )
     def test_missing_error(self, mock_class, *args):
         mock_class.side_effect = (
@@ -106,7 +109,8 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
         self.assertTrue(log_id.missing_error_record_ids)
 
     @mock.patch(
-        "odoo.addons.odoo_2_odoo_data_transfer.wizards.odoo_data_transfer_wizard.OdooXmlrpcWrapper"
+        "odoo.addons.odoo_2_odoo_data_transfer.wizards."
+        "odoo_data_transfer_wizard.OdooXmlrpcWrapper"
     )
     def test_one2many(self, mock_class, *args):
         mock_class.side_effect = (

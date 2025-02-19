@@ -29,6 +29,22 @@
                          <field name="state" widget="statusbar" />
                     </header>
                     <sheet>
+                          <div class="oe_button_box" name="button_box">
+                              <button
+                            name="action_view_transfered_records"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-list"
+                            attrs="{'invisible': [('transfered_records_counter', '=', 0)]}"
+                            string="Transfered Records"
+                        >
+                                  <field
+                                name="transfered_records_counter"
+                                widget="statinfo"
+                                string="Transfered Records"
+                            />
+                              </button>
+                          </div>
                          <group>
                               <group>
                                    <field name="remote_source_model_name" />
@@ -45,21 +61,13 @@
                               </group>
                          </group>
                          <notebook>
-                              <page name="records" string="Created records">
-                                   <group>
-                                        <field
-                                    name="transfered_records_ids"
-                                    nolabel="1"
-                                    colspan="2"
-                                />
-                                   </group>
-                              </page>
                               <page name="fields" string="Field mappings">
                                    <group>
                                         <field
                                     name="transfered_field_ids"
                                     nolabel="1"
                                     colspan="2"
+                                    context="{'tree_view_ref': 'odoo_2_odoo_data_transfer.odoo_data_transfer_log_field_view_tree', 'form_view_ref': 'odoo_2_odoo_data_transfer.odoo_data_transfer_log_field_view_form'}"
                                 />
                                    </group>
                               </page>

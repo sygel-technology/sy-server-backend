@@ -4,7 +4,7 @@
 <odoo>
 
     <record id="odoo_data_transfer_log_field_view_form" model="ir.ui.view">
-          <field name="name">odoo.data.transfer.template.line.view.form.inherit</field>
+          <field name="name">odoo.data.transfer.log.field.view.form</field>
           <field name="model">odoo.data.transfer.log.field</field>
           <field
             name="inherit_id"
@@ -12,17 +12,19 @@
         />
           <field name="mode">primary</field>
           <field name="arch" type="xml">
-               <field name="model" position="after">
-                    <field name="log_id" invisible="1" />
-               </field>
                <xpath expr="//form" position="attributes">
                     <attribute name="edit">false</attribute>
                </xpath>
+<!--                Boolean field can be edited although edit param in form is set to false
+               Make sure it cannot be modififed -->
+               <field name="skip_relational_errors" position="attributes">
+                    <attribute name="readonly">1</attribute>
+               </field>
           </field>
      </record>
 
      <record id="odoo_data_transfer_log_field_view_tree" model="ir.ui.view">
-          <field name="name">odoo.data.transfer.template.line.view.tree.inherit</field>
+          <field name="name">odoo.data.transfer.log.field.view.tree</field>
           <field name="model">odoo.data.transfer.log.field</field>
           <field
             name="inherit_id"
@@ -30,9 +32,6 @@
         />
           <field name="mode">primary</field>
           <field name="arch" type="xml">
-               <field name="remote_source_field" position="after">
-                    <field name="log_id" column_invisible="1" />
-               </field>
                <xpath expr="//tree" position="attributes">
                     <attribute name="create">false</attribute>
                </xpath>

@@ -12,7 +12,7 @@
                     <div
                         class="alert alert-info"
                         role="alert"
-                        invisible="not warn_msg"
+                        attrs="{'invisible': [('warn_msg', '=', False)]}"
                         style="margin-bottom:0px;"
                     >
                         <p>
@@ -40,16 +40,30 @@
                     </group>
                     <group>
                         <field name="state" invisible="True" />
-                        <field name="template_id" invisible="state =='validated'" />
+                        <field
+                            name="template_id"
+                            attrs="{'invisible': [('state', '=', 'validated')]}"
+                        />
                         <field name="remote_source_model_name" />
                         <field
                             name="local_target_model_id"
                             context="{'technical_display_name': True}"
                         />
-                        <field name="domain" invisible="state !='validated'" />
+                        <field
+                            name="domain"
+                            attrs="{'invisible': [('state', '!=', 'validated')]}"
+                        />
                     </group>
-                    <group string="Transference Fields" invisible="state !='validated'">
-                        <field name="transfer_line_ids" nolabel="1" colspan="2" />
+                    <group
+                        string="Transference Fields"
+                        attrs="{'invisible': [('state', '!=', 'validated')]}"
+                    >
+                        <field
+                            name="transfer_line_ids"
+                            nolabel="1"
+                            colspan="2"
+                            context="{'tree_view_ref': 'odoo_2_odoo_data_transfer.odoo_data_transfer_template_line_mixin_view_tree', 'form_view_ref': 'odoo_2_odoo_data_transfer.odoo_data_transfer_template_line_mixin_view_form'}"
+                        />
                     </group>
                 </sheet>
                 <footer>
@@ -58,20 +72,20 @@
                         type="object"
                         string="Accept"
                         class="oe_highlight"
-                        invisible="state != 'validated'"
+                        attrs="{'invisible': [('state', '!=', 'validated')]}"
                     />
                     <button
                         name="action_validate"
                         type="object"
                         string="Validate"
-                        invisible="state != 'validated'"
+                        attrs="{'invisible': [('state', '!=', 'validated')]}"
                     />
                     <button
                         name="action_validate"
                         type="object"
                         string="Validate"
                         class="oe_highlight"
-                        invisible="state == 'validated'"
+                        attrs="{'invisible': [('state', '=', 'validated')]}"
                     />
                     <button special="cancel" string="Cancel" />
                 </footer>

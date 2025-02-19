@@ -39,7 +39,12 @@
                               <field name="is_many2one_template" />
                          </group>
                          <group string="Field Mappings">
-                              <field name="transfer_line_ids" nolabel="1" colspan="2" />
+                              <field
+                            name="transfer_line_ids"
+                            context="{'tree_view_ref': 'odoo_2_odoo_data_transfer.odoo_data_transfer_template_line_mixin_view_tree', 'form_view_ref': 'odoo_2_odoo_data_transfer.odoo_data_transfer_template_line_mixin_view_form'}"
+                            nolabel="1"
+                            colspan="2"
+                        />
                          </group>
                     </sheet>
                </form>

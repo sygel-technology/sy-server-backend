@@ -50,7 +50,6 @@ class OdooXmlrpcWrapper:
         }
         if limit:
             kwargs["limit"] = limit
-
         return self.models.execute_kw(
             self.db, self.uid, self.password, model, "search_read", [domain], kwargs
         )
