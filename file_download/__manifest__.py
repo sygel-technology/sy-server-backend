@@ -6,9 +6,6 @@
     "version": "15.0.1.0.0",
     "sequence": 14,
     "summary": "Download file",
-    "description": """
-    Let's you call a wizard to download any file.
-    """,
     "author": "Sygel",
     "license": "AGPL-3",
     "website": "https://github.com/sygel-technology/sy-server-backend",
