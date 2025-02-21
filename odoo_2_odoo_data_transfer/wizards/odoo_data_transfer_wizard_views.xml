@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="odoo_data_transfer_wizard_form" model="ir.ui.view">
+        <field name="name">odoo.data.transfer.wizard.form</field>
+        <field name="model">odoo.data.transfer.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <div
+                        class="alert alert-info"
+                        role="alert"
+                        attrs="{'invisible': [('warn_msg', '=', False)]}"
+                        style="margin-bottom:0px;"
+                    >
+                        <p>
+                            <field name="warn_msg" force_save="1" readonly="1" />
+                        </p>
+                    </div>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="url" />
+                            <field name="db_name" />
+                            <field name="db_user" />
+                            <field name="db_password" password="True" />
+                        </group>
+                        <group>
+                            <field name="record_limit" />
+                            <field
+                                name="record_pack_number"
+                                groups="base.group_no_one"
+                            />
+                            <field name="migration_lang" />
+                            <field name="migrate_archived" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="state" invisible="True" />
+                        <field
+                            name="template_id"
+                            attrs="{'invisible': [('state', '=', 'validated')]}"
+                        />
+                        <field name="remote_source_model_name" />
+                        <field
+                            name="local_target_model_id"
+                            context="{'technical_display_name': True}"
+                        />
+                        <field
+                            name="domain"
+                            attrs="{'invisible': [('state', '!=', 'validated')]}"
+                        />
+                    </group>
+                    <group
+                        string="Transference Fields"
+                        attrs="{'invisible': [('state', '!=', 'validated')]}"
+                    >
+                        <field
+                            name="transfer_line_ids"
+                            nolabel="1"
+                            colspan="2"
+                            context="{'tree_view_ref': 'odoo_2_odoo_data_transfer.odoo_data_transfer_template_line_mixin_view_tree', 'form_view_ref': 'odoo_2_odoo_data_transfer.odoo_data_transfer_template_line_mixin_view_form'}"
+                        />
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        name="action_accept"
+                        type="object"
+                        string="Accept"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('state', '!=', 'validated')]}"
+                    />
+                    <button
+                        name="action_validate"
+                        type="object"
+                        string="Validate"
+                        attrs="{'invisible': [('state', '!=', 'validated')]}"
+                    />
+                    <button
+                        name="action_validate"
+                        type="object"
+                        string="Validate"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('state', '=', 'validated')]}"
+                    />
+                    <button special="cancel" string="Cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="odoo_data_transfer_wizard_action" model="ir.actions.act_window">
+        <field name="name">Odoo Data Transfer Wizard</field>
+        <field name="res_model">odoo.data.transfer.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="odoo_data_transfer_wizard_submenu"
+        name="Odoo Data Transfer Wizard"
+        parent="odoo_data_transfer_menu"
+        action="odoo_data_transfer_wizard_action"
+    />
+
+</odoo>

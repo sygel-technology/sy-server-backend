@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+     <record id="odoo_data_transfer_log_form_tree" model="ir.ui.view">
+          <field name="name">odoo.data.transfer.log.form.tree</field>
+          <field name="model">odoo.data.transfer.log</field>
+          <field name="arch" type="xml">
+               <tree create="false">
+                    <field name="date_start" />
+                    <field name="remote_source_model_name" />
+                    <field
+                    name="local_target_model_id"
+                    context="{'technical_display_name': True}"
+                />
+                    <field name="state" />
+                    <field name="transfered_records_ids" />
+               </tree>
+          </field>
+     </record>
+
+     <record id="odoo_data_transfer_log_form" model="ir.ui.view">
+          <field name="name">odoo.data.transfer.log.form</field>
+          <field name="model">odoo.data.transfer.log</field>
+          <field name="arch" type="xml">
+               <form create="false">
+                    <header>
+                         <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                          <div class="oe_button_box" name="button_box">
+                              <button
+                            name="action_view_transfered_records"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-list"
+                            attrs="{'invisible': [('transfered_records_counter', '=', 0)]}"
+                            string="Transfered Records"
+                        >
+                                  <field
+                                name="transfered_records_counter"
+                                widget="statinfo"
+                                string="Transfered Records"
+                            />
+                              </button>
+                          </div>
+                         <group>
+                              <group>
+                                   <field name="remote_source_model_name" />
+                                   <field name="local_target_model_id" />
+                                   <field name="domain" />
+                                   <field name="date_start" />
+                                   <field name="date_end" />
+                                   <field name="transfered_records_counter" />
+                                   <field name="record_total_counter" />
+                              </group>
+                              <group>
+                                   <field name="url" />
+                                   <field name="db_name" />
+                              </group>
+                         </group>
+                         <notebook>
+                              <page name="fields" string="Field mappings">
+                                   <group>
+                                        <field
+                                    name="transfered_field_ids"
+                                    nolabel="1"
+                                    colspan="2"
+                                    context="{'tree_view_ref': 'odoo_2_odoo_data_transfer.odoo_data_transfer_log_field_view_tree', 'form_view_ref': 'odoo_2_odoo_data_transfer.odoo_data_transfer_log_field_view_form'}"
+                                />
+                                   </group>
+                              </page>
+                              <page
+                            name="already_transfered"
+                            string="Already Transfered Records"
+                        >
+                                   <group>
+                                        <field
+                                    name="already_transfered_record_ids"
+                                    nolabel="1"
+                                    colspan="2"
+                                />
+                                   </group>
+                              </page>
+                              <page
+                            name="missing_error"
+                            string="Records with Missing Errors"
+                        >
+                                   <group>
+                                        <field
+                                    name="missing_error_record_ids"
+                                    nolabel="1"
+                                    colspan="2"
+                                />
+                                   </group>
+                              </page>
+                              <page
+                            name="other_error"
+                            string="Records with other errors"
+                        >
+                                   <group>
+                                        <field
+                                    name="other_error_record_ids"
+                                    nolabel="1"
+                                    colspan="2"
+                                />
+                                   </group>
+                              </page>
+                         </notebook>
+                    </sheet>
+               </form>
+          </field>
+     </record>
+
+     <record id="odoo_data_transfer_log_action" model="ir.actions.act_window">
+          <field name="name">Odoo Data Transfer Logs</field>
+          <field name="res_model">odoo.data.transfer.log</field>
+          <field name="view_mode">tree,form</field>
+     </record>
+
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="odoo_data_transfer_log_field_view_form" model="ir.ui.view">
+          <field name="name">odoo.data.transfer.log.field.view.form</field>
+          <field name="model">odoo.data.transfer.log.field</field>
+          <field
+            name="inherit_id"
+            ref="odoo_2_odoo_data_transfer.odoo_data_transfer_template_line_mixin_view_form"
+        />
+          <field name="mode">primary</field>
+          <field name="arch" type="xml">
+               <xpath expr="//form" position="attributes">
+                    <attribute name="edit">false</attribute>
+               </xpath>
+<!--                Boolean field can be edited although edit param in form is set to false
+               Make sure it cannot be modififed -->
+               <field name="skip_relational_errors" position="attributes">
+                    <attribute name="readonly">1</attribute>
+               </field>
+          </field>
+     </record>
+
+     <record id="odoo_data_transfer_log_field_view_tree" model="ir.ui.view">
+          <field name="name">odoo.data.transfer.log.field.view.tree</field>
+          <field name="model">odoo.data.transfer.log.field</field>
+          <field
+            name="inherit_id"
+            ref="odoo_2_odoo_data_transfer.odoo_data_transfer_template_line_mixin_view_tree"
+        />
+          <field name="mode">primary</field>
+          <field name="arch" type="xml">
+               <xpath expr="//tree" position="attributes">
+                    <attribute name="create">false</attribute>
+               </xpath>
+          </field>
+     </record>
+
+</odoo>
