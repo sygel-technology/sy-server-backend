@@ -3,13 +3,16 @@
 
 {
     "name": "File download",
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "sequence": 14,
     "summary": "Download file",
     "author": "Sygel",
     "license": "AGPL-3",
     "website": "https://github.com/sygel-technology/sy-server-backend",
     "category": "report",
+    "external_dependencies": {
+        "python": ["odoo_test_helper"],
+    },
     "depends": [
         "base",
     ],
