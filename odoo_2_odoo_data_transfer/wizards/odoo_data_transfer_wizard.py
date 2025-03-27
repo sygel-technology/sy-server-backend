@@ -51,6 +51,10 @@ class OdooDataTransferWizard(models.TransientModel):
         help="Useful when migrating translated fields",
     )
     migrate_archived = fields.Boolean(default=True)
+    migrate_failed = fields.Boolean(
+        help="Failed records won't be migrated by default for better automating. "
+        "Mark this check after fixing the data to migrate failed records"
+    )
     state = fields.Selection(
         selection=[("new", "New"), ("validated", "Validated")],
         required=True,
@@ -199,6 +203,7 @@ class OdooDataTransferWizard(models.TransientModel):
                 "db_name": self.db_name,
                 "date_start": datetime.datetime.now(),
                 "transfered_field_ids": (self.transfer_line_ids._copy_line_vals()),
+                "is_failed_migration": self.migrate_failed,
             }
         )
         return res
@@ -290,18 +295,27 @@ class OdooDataTransferWizard(models.TransientModel):
         self.log_id = self._create_logs()
 
         # Calculate relational fields data mappings
+        logging.info("Calculating ID Associations for relational fields")
         for rel_tmpl_line in self._get_relational_lines_to_compute():
             self._autocalculate_id_mappings(wrapper, rel_tmpl_line)
+        logging.info("End of calculation of ID Associations for relational fields")
 
         # Get already transfered records and update domain
-        already_transfered_records = self.env[
-            "odoo.data.transfer.log"
-        ]._get_transfered_record_log_lines(self.local_target_model_id)
-        self.log_id._copy_transfered_records_ids(already_transfered_records)
-        already_transfered_domain = [
-            ("id", "not in", already_transfered_records.mapped("remote_id"))
-        ]
-        final_domain = already_transfered_domain + safe_eval(self.domain)
+        logging.info("Creating transference domain")
+        if not self.migrate_failed:
+            last_transfered_id = self.env[
+                "odoo.data.transfer.log"
+            ]._get_last_transfered_record_id(self.local_target_model_id)
+            already_transfered_domain = [("id", ">", last_transfered_id)]
+            final_domain = already_transfered_domain + safe_eval(self.domain)
+        else:
+            not_transferred_ids = self.env[
+                "odoo.data.transfer.log"
+            ]._get_failed_record_ids(self.local_target_model_id)
+            not_transferred_domain = [("id", "in", list(not_transferred_ids))]
+            final_domain = not_transferred_domain + safe_eval(self.domain)
+        logging.info("End of creation of transference domain")
+        logging.info(f"Domain: {final_domain}")
 
         # Loop records packages
         record_counter = 0

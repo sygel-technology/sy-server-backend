@@ -68,6 +68,8 @@ On every failed record, the remote id and the error message are shown. We have 2
 
 - Other errors: The rest of the errors. Less common but more difficult to resolve, they will probably need a developer.
 
-If you execute again the same Transference template, the already transferred records will be queried in the logs, and omitted in the next migration process. They will also be shown in the "Already Transferred Records" tab of the migration log notebook. 
+If you execute again the same Transference template, the last transfered record will be queried in the logs, the next migration process will start from that record. 
 
 You can repeat the execution of the migration process until there are no errors in the migration log.
+
+The failed records won't be included in the next migration process if they are before that last migrated record, if you have fixed the problems and you want to include again the failed records in the migration, you should mark the "Migrate Failed" check of the migration wizard, then it will only try to migrate those failed records.

@@ -44,6 +44,7 @@ class OdooXmlrpcWrapper:
         if isinstance(domain, str):
             domain = safe_eval(domain)
         kwargs = {
+            "order": "id",
             "fields": fields,
             "offset": offset,
             "context": {"lang": self.lang, "active_test": not self.archived},

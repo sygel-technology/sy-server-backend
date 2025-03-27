@@ -789,3 +789,23 @@ msgstr "Validar"
 #: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__warn_msg
 msgid "Warn Msg"
 msgstr "Mensaje de aviso"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__first_transferred_id
+msgid "First Transferred"
+msgstr "Primer transferido"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__last_transferred_id
+msgid "Last Transferred"
+msgstr "Ultimo transferido"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__is_failed_migration
+msgid "Is Failed Migration"
+msgstr "Es migración de fallidos"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__migrate_failed
+msgid "Migrate Failed"
+msgstr "Migrar fallidos"

@@ -48,12 +48,6 @@ class OdooDataTransferTemplateLog(models.Model):
         inverse_name="log_id",
         domain=["|", ("error_type", "=", False), ("error_type", "=", "ok")],
     )
-    already_transfered_record_ids = fields.One2many(
-        string="Already transfered records",
-        comodel_name="odoo.data.transfer.log.record",
-        inverse_name="log_id",
-        domain=[("error_type", "=", "already_transfered")],
-    )
     missing_error_record_ids = fields.One2many(
         string="Records with Missing Errors",
         comodel_name="odoo.data.transfer.log.record",
@@ -67,23 +61,55 @@ class OdooDataTransferTemplateLog(models.Model):
         domain=[("error_type", "=", "other_error")],
     )
     transfered_records_counter = fields.Integer(
-        compute="_compute_transfered_records_counter"
+        compute="_compute_transfered_records_counter",
+        store=True,
     )
     record_total_counter = fields.Integer()
+
+    first_transferred_id = fields.Integer(
+        compute="_compute_transfered_records_counter",
+        store=True,
+    )
+    last_transferred_id = fields.Integer(
+        compute="_compute_transfered_records_counter",
+        store=True,
+    )
+    is_failed_migration = fields.Boolean(readonly=True)
 
     @api.depends("transfered_records_ids")
     def _compute_transfered_records_counter(self):
         for rec in self:
             rec.transfered_records_counter = len(rec.transfered_records_ids)
+            rec.first_transferred_id = (
+                self.env["odoo.data.transfer.log.record"]
+                .search([("log_id", "=", rec.id)], order="remote_id asc", limit=1)
+                .remote_id
+            )
+            rec.last_transferred_id = (
+                self.env["odoo.data.transfer.log.record"]
+                .search([("log_id", "=", rec.id)], order="remote_id desc", limit=1)
+                .remote_id
+            )
 
     @api.model
-    def _get_transfered_record_log_lines(self, model_id):
-        """Returns record of model created befor with this module"""
-        return (
-            self.search([("local_target_model_id", "=", model_id.id)])
-            .mapped("transfered_records_ids")
-            .filtered(lambda li: li.local_id and li.local_id.exists())
-        )
+    def _get_last_transfered_record_id(self, model_id):
+        return self.search(
+            [("local_target_model_id", "=", model_id.id)],
+            order="last_transferred_id desc",
+            limit=1,
+        ).last_transferred_id
+
+    @api.model
+    def _get_failed_record_ids(self, model_id):
+        failed_records = set()
+        fixed_records = set()
+        logs = self.search([("local_target_model_id", "=", model_id.id)])
+        for log in logs:
+            failed_records.update(log.missing_error_record_ids.mapped("remote_id"))
+            failed_records.update(log.other_error_record_ids.mapped("remote_id"))
+            if log.is_failed_migration:
+                fixed_records.update(log.transfered_records_ids.mapped("remote_id"))
+        return failed_records - fixed_records
 
     def action_log(self):
         self.ensure_one()
@@ -94,28 +120,6 @@ class OdooDataTransferTemplateLog(models.Model):
             "res_model": "odoo.data.transfer.log",
             "res_id": self.id,
         }
-
-    def _copy_transfered_records_ids(self, transfered_records_ids):
-        """Creates in already_transfered_record_ids of self
-        another transfered_records_ids"""
-        already_transfered_records_dict = {}
-        already_transfered_records_dict.update(
-            {
-                "already_transfered_record_ids": [
-                    (
-                        0,
-                        0,
-                        {
-                            "remote_id": rec.remote_id,
-                            "local_id": f"{rec.local_id._name},{rec.local_id.id}",
-                            "error_type": "already_transfered",
-                        },
-                    )
-                    for rec in transfered_records_ids
-                ]
-            }
-        )
-        self.write(already_transfered_records_dict)
 
     def _calculate_state(self):
         for rec in self:
