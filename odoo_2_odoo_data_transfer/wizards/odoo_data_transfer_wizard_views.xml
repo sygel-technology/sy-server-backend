@@ -36,6 +36,7 @@
                             />
                             <field name="migration_lang" />
                             <field name="migrate_archived" />
+                            <field name="migrate_failed" />
                         </group>
                     </group>
                     <group>

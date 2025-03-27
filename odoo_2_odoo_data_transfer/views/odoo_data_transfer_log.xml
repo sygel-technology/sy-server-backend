@@ -15,7 +15,7 @@
                     context="{'technical_display_name': True}"
                 />
                     <field name="state" />
-                    <field name="transfered_records_ids" />
+                    <field name="transfered_records_counter" />
                </tree>
           </field>
      </record>
@@ -33,15 +33,19 @@
                               <group>
                                    <field name="remote_source_model_name" />
                                    <field name="local_target_model_id" />
-                                   <field name="domain" />
                                    <field name="date_start" />
                                    <field name="date_end" />
-                                   <field name="transfered_records_counter" />
-                                   <field name="record_total_counter" />
                               </group>
                               <group>
                                    <field name="url" />
                                    <field name="db_name" />
+                              </group>
+                              <group>
+                                   <field name="domain" />
+                                   <field name="transfered_records_counter" />
+                                   <field name="record_total_counter" />
+                                   <field name="first_transferred_id" />
+                                   <field name="last_transferred_id" />
                               </group>
                          </group>
                          <notebook>
@@ -58,18 +62,6 @@
                                    <group>
                                         <field
                                     name="transfered_field_ids"
-                                    nolabel="1"
-                                    colspan="2"
-                                />
-                                   </group>
-                              </page>
-                              <page
-                            name="already_transfered"
-                            string="Already Transfered Records"
-                        >
-                                   <group>
-                                        <field
-                                    name="already_transfered_record_ids"
                                     nolabel="1"
                                     colspan="2"
                                 />
