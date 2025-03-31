@@ -302,7 +302,7 @@ class OdooDataTransferWizard(models.TransientModel):
         logging.info("Calculating ID Associations for relational fields")
         ids_map_map = {}  # Ids mappings for each relational line id
         for rel_tmpl_line in self._get_relational_lines_to_compute():
-            ids_map_map[rel_tmpl_line.id] = self._autocalculate_id_mappings(
+            ids_map_map[str(rel_tmpl_line.id)] = self._autocalculate_id_mappings(
                 wrapper, rel_tmpl_line
             )
         logging.info("End of calculation of ID Associations for relational fields")
@@ -348,7 +348,7 @@ class OdooDataTransferWizard(models.TransientModel):
                 break
             # Loop records
             for record_dict in records_data:
-                self.create_record(record_dict, ids_map_map=ids_map_map)
+                self.create_record(record_dict, **ids_map_map)
             logging.info(f"{record_counter} / {record_total} records created")
         self.log_id._calculate_state()
         self.log_id.write(
