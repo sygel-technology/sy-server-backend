@@ -97,12 +97,17 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
     )
     def _compute_id_mappings(self):
         for rec in self:
-            if rec.relational_migration_method == "match_keys":
-                id_mappings = safe_eval(rec.auto_id_mappings)
-                id_mappings.update(safe_eval(rec.manual_id_mappings))
-                rec.id_mappings = str(id_mappings)
-            elif rec.relational_migration_method == "map_ids":
-                rec.id_mappings = rec.manual_id_mappings
+            rec.id_mappings = rec._get_id_mappings(safe_eval(rec.auto_id_mappings))
+
+    def _get_id_mappings(self, auto_id_mappings):
+        self.ensure_one()
+        id_mappings = {}
+        if self.relational_migration_method == "match_keys":
+            id_mappings = auto_id_mappings
+            id_mappings.update(safe_eval(self.manual_id_mappings))
+        elif self.relational_migration_method == "map_ids":
+            id_mappings = self.manual_id_mappings
+        return id_mappings
 
     def _copy_line_vals(self, **def_vals):
         res = []
@@ -123,12 +128,14 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
         return res
 
     @api.model
-    def _parse_many2one_value(self, value):
+    def _parse_many2one_value(self, value, ids_map=False):
         """
         value = [remote_id, remote_name]
         ids_map = {remote_id1: new_id1,... remote_idN: new_idN}
         """
-        ids_map = safe_eval(self.id_mappings)
+        if not ids_map:
+            ids_map = safe_eval(self.id_mappings)
+
         if ids_map.get(value[0]):
             return ids_map[value[0]]
         elif self.skip_relational_errors:
@@ -149,12 +156,13 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
             )
 
     @api.model
-    def _parse_many2many_value(self, value):
+    def _parse_many2many_value(self, value, ids_map=False):
         """
         value = [remote_id1..remote_idN]
         ids_map = {remote_id1: new_id1... remote_idN: new_idN}
         """
-        ids_map = safe_eval(self.id_mappings)
+        if not ids_map:
+            ids_map = safe_eval(self.id_mappings)
         res = []
         for remote_id in value:
             if ids_map.get(remote_id):
@@ -178,13 +186,14 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
         return res
 
     @api.model
-    def _parse_many2one_reference_value(self, value):
+    def _parse_many2one_reference_value(self, value, ids_map=False):
         """
         value = remote_id
         ids_map = {remote_id1: new_id1,... remote_idN: new_idN}
         returns: new_id
         """
-        ids_map = safe_eval(self.id_mappings)
+        if not ids_map:
+            ids_map = safe_eval(self.id_mappings)
         if ids_map.get(value):
             return ids_map[value]
         elif self.skip_relational_errors:
@@ -216,7 +225,7 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
             res.append((0, 0, parsed_rec_data))
         return res
 
-    def _parse_value(self, value):
+    def _parse_value(self, value, ids_map=False):
         if not value:
             return value
 
@@ -227,19 +236,19 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
             self.migration_type == "relational"
             and self.local_target_field_type == "many2one"
         ):
-            return self._parse_many2one_value(value)
+            return self._parse_many2one_value(value, ids_map)
 
         if (
             self.migration_type == "relational"
             and self.local_target_field_type == "many2many"
         ):
-            return self._parse_many2many_value(value)
+            return self._parse_many2many_value(value, ids_map)
 
         if (
             self.migration_type == "relational"
             and self.local_target_field_type == "many2one_reference"
         ):
-            return self._parse_many2one_reference_value(value)
+            return self._parse_many2one_reference_value(value, ids_map)
 
         if self.migration_type == "one2many":
             return self._parse_one2many_value(value)

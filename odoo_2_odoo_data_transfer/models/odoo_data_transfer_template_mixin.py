@@ -57,11 +57,12 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
     def _parse_key(self, key):
         return self._get_template_line(key).local_target_field_id.name
 
-    def _parse_value(self, key, value):
+    def _parse_value(self, key, value, **ids_map_map):
         tmpl_line = self._get_template_line(key)
-        return tmpl_line._parse_value(value)
+        ids_map = ids_map_map.get(tmpl_line.id)
+        return tmpl_line._parse_value(value, ids_map)
 
-    def _get_new_record_vals(self, record_dict):
+    def _get_new_record_vals(self, record_dict, **ids_map_map):
         """Returns vals of a new record given the template and the old values
         Inherit this function to add new custom values."""
         new_rec_vals = {}
@@ -69,7 +70,9 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
         for key, value in record_dict.items():
             if not self._get_template_line(key):
                 continue
-            new_rec_vals.update({self._parse_key(key): self._parse_value(key, value)})
+            new_rec_vals.update(
+                {self._parse_key(key): self._parse_value(key, value, **ids_map_map)}
+            )
         return new_rec_vals
 
     def _equivalent_types(self, type1, type2):

@@ -100,7 +100,8 @@ class OdooDataTransferWizard(models.TransientModel):
     def _autocalculate_id_mappings(self, wrapper, tmpl_line):
         """Calculates a {remote_id:new_id} map for a the
         related remote model of the relational tmpl_line field"""
-        res_id_mappings = {}
+        auto_id_mappings = {}
+        final_id_mappings = {}
         ids_grouped_dict = {}
         rem_model = self._get_related_remote_model(wrapper, tmpl_line)
         rem_model_key_name = tmpl_line.remote_identifier_field
@@ -123,26 +124,29 @@ class OdooDataTransferWizard(models.TransientModel):
                 ids_grouped_dict[key][1] = local_rec["id"]
         # Create final dict, remove initial key
         for ids_list in ids_grouped_dict.values():
-            res_id_mappings.update({ids_list[0]: ids_list[1]})
-        tmpl_line.write({"auto_id_mappings": str(res_id_mappings)})
+            if ids_list[1]:
+                auto_id_mappings.update({ids_list[0]: ids_list[1]})
+        tmpl_line.write({"auto_id_mappings": str(auto_id_mappings)})
+        final_id_mappings = tmpl_line._get_id_mappings(auto_id_mappings)
+        return final_id_mappings
 
     def _validate_transference(self, wrapper):
         self._validate_template(wrapper)
         for tmpl in self.mapped("transfer_line_ids.one2many_template_id"):
             tmpl._validate_template(wrapper)
 
-    def _create_record(self, record_dict):
-        new_rec_vals = self._get_new_record_vals(record_dict)
+    def _create_record(self, record_dict, **ids_map_map):
+        new_rec_vals = self._get_new_record_vals(record_dict, **ids_map_map)
         model = self.env[self.local_target_model_id.model]
         return model.create(new_rec_vals)
 
-    def create_record(self, record_dict):
+    def create_record(self, record_dict, **ids_map_map):
         """Tries record creation and handles exceptions
         Returns: dict with 'code', 'record', 'id' and 'error' keys
         """
         try:
             with self.env.cr.savepoint():
-                record_id = self._create_record(record_dict)
+                record_id = self._create_record(record_dict, **ids_map_map)
                 self.log_id.write(
                     {
                         "transfered_records_ids": [
@@ -296,10 +300,12 @@ class OdooDataTransferWizard(models.TransientModel):
 
         # Calculate relational fields data mappings
         logging.info("Calculating ID Associations for relational fields")
+        ids_map_map = {}  # Ids mappings for each relational line id
         for rel_tmpl_line in self._get_relational_lines_to_compute():
-            self._autocalculate_id_mappings(wrapper, rel_tmpl_line)
+            ids_map_map[rel_tmpl_line.id] = self._autocalculate_id_mappings(
+                wrapper, rel_tmpl_line
+            )
         logging.info("End of calculation of ID Associations for relational fields")
-
         # Get already transfered records and update domain
         logging.info("Creating transference domain")
         if not self.migrate_failed:
@@ -342,7 +348,7 @@ class OdooDataTransferWizard(models.TransientModel):
                 break
             # Loop records
             for record_dict in records_data:
-                self.create_record(record_dict)
+                self.create_record(record_dict, ids_map_map=ids_map_map)
             logging.info(f"{record_counter} / {record_total} records created")
         self.log_id._calculate_state()
         self.log_id.write(
