@@ -59,7 +59,7 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
 
     def _parse_value(self, key, value, **ids_map_map):
         tmpl_line = self._get_template_line(key)
-        ids_map = ids_map_map.get(tmpl_line.id)
+        ids_map = ids_map_map.get(str(tmpl_line.id))
         return tmpl_line._parse_value(value, ids_map)
 
     def _get_new_record_vals(self, record_dict, **ids_map_map):
