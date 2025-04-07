@@ -4,3 +4,4 @@
 "odoo_2_odoo_data_transfer.template_missing","Test template missing error","","Contact","res.partner","[('parent_id', '!=', False)]",""
 "odoo_2_odoo_data_transfer.template_one2many_childs","Test one2many template","","Contact","res.partner","[]","True"
 "odoo_2_odoo_data_transfer.template_one2many","Test one2many","","Contact","res.partner","[('is_company', '=', 'True'), ('child_ids', '!=', False)]",""
+"odoo_2_odoo_data_transfer.template_many2one","Test many2one","","Contact","res.partner","[('is_company', '=', 'True'), ('child_ids', '!=', False)]",""

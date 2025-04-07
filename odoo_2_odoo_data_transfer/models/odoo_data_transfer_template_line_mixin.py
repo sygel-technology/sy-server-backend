@@ -73,7 +73,7 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
         domain=[("is_many2one_template", "=", True)],
     )
 
-    @api.depends("local_target_field_id")
+    @api.depends("local_target_field_id.relation")
     def _compute_related_model(self):
         for rec in self:
             rec.related_model = rec.local_target_field_id.relation
