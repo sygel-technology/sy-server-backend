@@ -106,9 +106,10 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
         if use_same_model:
             return tmpl_line.related_model
         rem_field = tmpl_line.remote_source_field
-        return wrapper.fields_get(
+        field = wrapper.fields_get(
             tmpl_line.transfer_id.remote_source_model_name, [rem_field]
-        )[rem_field]["relation"]
+        )[rem_field]
+        return field and field["relation"]
 
     def _validate_template(self, wrapper):
         # Validate model
@@ -135,6 +136,8 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
         # Validate remote relational fields keys
         for line in self._get_relational_lines_to_compute():
             remote_model = self._get_related_remote_model(wrapper, line)
+            if not remote_model:
+                continue
             field_data = wrapper.fields_get(remote_model, line.remote_identifier_field)
             error = self._validate_remote_field(
                 line, field_data, relational_key_mode=True
