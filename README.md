@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [base_old_migration_fields](base_old_migration_fields/) | 17.0.1.0.0 |  | Base Old Migration Fields
-[odoo_2_odoo_data_transfer](odoo_2_odoo_data_transfer/) | 17.0.1.2.1 |  | Generic tools to manage data transfer between Odoos
+[odoo_2_odoo_data_transfer](odoo_2_odoo_data_transfer/) | 17.0.1.3.0 |  | Generic tools to manage data transfer between Odoos
 [reports_font_size](reports_font_size/) | 17.0.1.0.0 |  | Change reports font size from the document layout configurator
 
 [//]: # (end addons)
