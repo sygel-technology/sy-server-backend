@@ -25,11 +25,11 @@ Odoo 2 Odoo Data Transfer
 This module offers you tools to transfer data between odoo servers with
 different versions.
 
-- Define the models and fields to migrate from one Odoo and their
-  correspondences with the other Odoo with transference templates
-- Execute the transference templates with a trasference wizard.
-- Keep track of the transfered records, and transference errors with
-  transference logs.
+-  Define the models and fields to migrate from one Odoo and their
+   correspondences with the other Odoo with transference templates
+-  Execute the transference templates with a trasference wizard.
+-  Keep track of the transfered records, and transference errors with
+   transference logs.
 
 **Table of contents**
 
@@ -74,35 +74,35 @@ make sure both fields have similar types.
 If the field types are relational (many2one, many2many, one2many) the
 transference will be more complex and you will have to fill more data:
 
-- If the fields are many2one or many2many, for example: a contact, Odoo
-  will need to associate the remote contact with the local one. For that
-  you will have to choose a Transference method. Note: Creating records
-  is not currently supported, the remote related record has to be
-  created in the local odoo
+-  If the fields are many2one or many2many, for example: a contact, Odoo
+   will need to associate the remote contact with the local one. For
+   that you will have to choose a Transference method. Note: Creating
+   records is not currently supported, the remote related record has to
+   be created in the local odoo
 
-  - "Map ids" is the simplest method, you have to do the associations
-    filling a python dictionary with two keys for each related record,
-    old_id and new_id. For example, if you have the "Pedrito" partner in
-    the remote Odoo with id 6, but his id in the local odoo is 10, the
-    map will be {6:10,}.
+   -  "Map ids" is the simplest method, you have to do the associations
+      filling a python dictionary with two keys for each related record,
+      old_id and new_id. For example, if you have the "Pedrito" partner
+      in the remote Odoo with id 6, but his id in the local odoo is 10,
+      the map will be {6:10,}.
 
-  - "Match keys" is the default method. You have to fill a identifier
-    field for the remote and local model, then odoo will automatically
-    make the associations. In the partner example, you can have the
-    "Vat" field as the identifier for both fields, "Pedrito" should have
-    the same vat in both Odoos and Odoo will identify them as the same
-    contact for having the same identifier field. The map of ids will
-    also be available to manually override the associations if some
-    related records do not have the same value in the key field.
+   -  "Match keys" is the default method. You have to fill a identifier
+      field for the remote and local model, then odoo will automatically
+      make the associations. In the partner example, you can have the
+      "Vat" field as the identifier for both fields, "Pedrito" should
+      have the same vat in both Odoos and Odoo will identify them as the
+      same contact for having the same identifier field. The map of ids
+      will also be available to manually override the associations if
+      some related records do not have the same value in the key field.
 
-- If the related field has one2many type, there is usually a strong
-  dependency between the fields, and in this case we have to create the
-  records of the related model at the same time. For example, if you are
-  transferring posted invoices, you will have to transfer its invoice
-  lines at the same time. In order to do that, you have to fill the
-  "One2Many Template" field with another data transfer template for the
-  related model, that second transfer template should have the "Is
-  Many2One Template" boolean field set as true.
+-  If the related field has one2many type, there is usually a strong
+   dependency between the fields, and in this case we have to create the
+   records of the related model at the same time. For example, if you
+   are transferring posted invoices, you will have to transfer its
+   invoice lines at the same time. In order to do that, you have to fill
+   the "One2Many Template" field with another data transfer template for
+   the related model, that second transfer template should have the "Is
+   Many2One Template" boolean field set as true.
 
 Import / export data transfer templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -154,24 +154,24 @@ on the Transference log, fix the data, and repeat the migration process.
 On every failed record, the remote id and the error message are shown.
 We have 2 types of errors:
 
-- Missing Errors: Records that could not be migrated because another
-  related record could not be found locally. For example, if we are
-  migrating a sale order of our customer "Pedro", and "Pedro" could not
-  be found locally, this error will be generated. To have the missing
-  error you have some common options.
+-  Missing Errors: Records that could not be migrated because another
+   related record could not be found locally. For example, if we are
+   migrating a sale order of our customer "Pedro", and "Pedro" could not
+   be found locally, this error will be generated. To have the missing
+   error you have some common options.
 
-  - If the record does not exist you can create it.
-  - If the record does exist but the key has changed, you can edit it to
-    be the same
-  - If the record does exist but the key has changed, you can add the
-    remote id and the local id to the id mappings of the template.
-  - If fixing the data is too difficult or expensive, you can skip the
-    errors with the "Skip Relational Errors" of the migration template
-    line. If a related field is not found, it will be set to false
-    instead of throwing an error.
+   -  If the record does not exist you can create it.
+   -  If the record does exist but the key has changed, you can edit it
+      to be the same
+   -  If the record does exist but the key has changed, you can add the
+      remote id and the local id to the id mappings of the template.
+   -  If fixing the data is too difficult or expensive, you can skip the
+      errors with the "Skip Relational Errors" of the migration template
+      line. If a related field is not found, it will be set to false
+      instead of throwing an error.
 
-- Other errors: The rest of the errors. Less common but more difficult
-  to resolve, they will probably need a developer.
+-  Other errors: The rest of the errors. Less common but more difficult
+   to resolve, they will probably need a developer.
 
 If you execute again the same Transference template, the last transfered
 record will be queried in the logs, the next migration process will
@@ -191,15 +191,10 @@ Known issues / Roadmap
 
 Improvements proposed:
 
-- Use module queue job or odoo triggers to queue the migration process.
-- Add unit tests, for:
-
-  - many2one and many2many field transferences.
-  - The migrate_archived option of the wizard.
-
-- Add write mode
-- Match records by external id
-- Add smartbutton to see a list of migrated records in log
+-  Use module queue job or odoo triggers to queue the migration process.
+-  Add write mode
+-  Match records by external id
+-  Add smartbutton to see a list of migrated records in log
 
 Bug Tracker
 ===========
@@ -222,10 +217,10 @@ Authors
 Contributors
 ------------
 
-- Alberto Martínez alberto.martinez@sygel.es
-- Manuel Regidor manuel.regidor@sygel.es
-- Valentin Vinagre valentin.vinagre@sygel.es
-- Harald Panten harald.panten@sygel.es
+-  Alberto Martínez alberto.martinez@sygel.es
+-  Manuel Regidor manuel.regidor@sygel.es
+-  Valentin Vinagre valentin.vinagre@sygel.es
+-  Harald Panten harald.panten@sygel.es
 
 Maintainers
 -----------
