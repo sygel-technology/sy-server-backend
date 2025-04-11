@@ -7,10 +7,10 @@ from odoo.tests.common import TransactionCase
 
 
 class TestReportsFontSize(TransactionCase):
-    def setUp(cls):
+    def setUp(self):
         # Well use demo data. We dont care about data, only report css
         res = super().setUp()
-        cls.company_id = cls.env.company
+        self.company_id = self.env.company
         return res
 
     def test_reports_font_size(self):
