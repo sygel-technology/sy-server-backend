@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_base_document_layout_custom_css" model="ir.ui.view">
+        <field name="name">Document Layout Custom Css</field>
+        <field name="model">base.document.layout</field>
+        <field name="inherit_id" ref="web.view_base_document_layout" />
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="after">
+                <notebook colspan="4">
+                    <page string="Custom Fonts" name="custom_fonts">
+                        <group>
+                            <group>
+                                <label for="text_size" />
+                                <div class="o_row" name="text_size">
+                                    <field
+                                        name="text_size"
+                                        class="oe_inline"
+                                        field_id="text_size_0"
+                                    />
+                                    <field
+                                        name="text_size_unit"
+                                        field_id="text_size_unit_0"
+                                    />
+                                </div>
+
+                                <label for="header_size" />
+                                <div class="o_row" name="header_size">
+                                    <field
+                                        name="header_size"
+                                        class="oe_inline"
+                                        field_id="header_size_0"
+                                    />
+                                    <field
+                                        name="header_size_unit"
+                                        field_id="header_size_unit_0"
+                                    />
+                                </div>
+                            </group>
+                        </group>
+                    </page>
+                    <page
+                        string="Custom Css"
+                        name="custom_css"
+                        groups="base.group_no_one"
+                        colspan="2"
+                    >
+                        <field name="manual_report_css" placeholder="Custom css..." />
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>
