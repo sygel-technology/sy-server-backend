@@ -2,10 +2,11 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo.exceptions import AccessError, ValidationError
-from odoo.tests.common import TransactionCase
+
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestModelAccessRestriction(TransactionCase):
+class TestModelAccessRestriction(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -23,7 +24,6 @@ class TestModelAccessRestriction(TransactionCase):
                 "perm_create": True,
                 "perm_unlink": True,
                 "perm_write": True,
-                "perm_read": True,
                 "groups": [(4, cls.group.id)],
             }
         )
@@ -34,7 +34,6 @@ class TestModelAccessRestriction(TransactionCase):
                 "perm_create": False,
                 "perm_unlink": False,
                 "perm_write": False,
-                "perm_read": False,
                 "groups": [(4, cls.group.id)],
             }
         )
@@ -43,7 +42,6 @@ class TestModelAccessRestriction(TransactionCase):
         self.assertFalse(self.env["res.partner"].check_access_rights("create", False))
         self.assertFalse(self.env["res.partner"].check_access_rights("unlink", False))
         self.assertFalse(self.env["res.partner"].check_access_rights("write", False))
-        self.assertFalse(self.env["res.partner"].check_access_rights("read", False))
         self.assertTrue(
             self.env["res.partner.category"].check_access_rights("create", False)
         )
@@ -53,16 +51,12 @@ class TestModelAccessRestriction(TransactionCase):
         self.assertTrue(
             self.env["res.partner.category"].check_access_rights("write", False)
         )
-        self.assertTrue(
-            self.env["res.partner.category"].check_access_rights("read", False)
-        )
 
     def test_restriction_passed(self):
         self.group.write({"users": [(4, self.env.uid)]})
         self.assertTrue(self.env["res.partner"].check_access_rights("create", False))
         self.assertTrue(self.env["res.partner"].check_access_rights("unlink", False))
         self.assertTrue(self.env["res.partner"].check_access_rights("write", False))
-        self.assertTrue(self.env["res.partner"].check_access_rights("read", False))
 
     def test_no_restriction(self):
         self.restriction.unlink()

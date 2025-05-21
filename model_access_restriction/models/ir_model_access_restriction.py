@@ -61,9 +61,12 @@ class IrModelAccessRestriction(models.Model):
             "unlink": _("delete"),
         }[operation]
         msg = _(
-            "You are not allowed to {operation} {model} "
-            "due to the following model access restriction(s): {restrictions}",
-        ).format(operation=operation_txt, model=model, restrictions=restriction_names)
+            "You are not allowed to %(operation)s %(model)s "
+            "due to the following model access restriction(s): %(restrictions)s",
+            operation=operation_txt,
+            model=model,
+            restrictions=restriction_names,
+        )
         raise AccessError(msg)
 
     def _check_model_exists(self):
