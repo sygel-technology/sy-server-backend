@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo-addon-base_old_migration_fields>=15.0dev,<15.1dev',
         'odoo-addon-file_download>=15.0dev,<15.1dev',
         'odoo-addon-html_fields_document_layout_configuration>=15.0dev,<15.1dev',
+        'odoo-addon-model_access_restriction>=15.0dev,<15.1dev',
     ],
     classifiers=[
         'Programming Language :: Python',
