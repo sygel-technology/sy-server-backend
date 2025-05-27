@@ -4,7 +4,7 @@
 {
     "name": "Base Old Migration Fields",
     "summary": "Base Old Migration Fields",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.0.1",
     "category": "Custom",
     "website": "https://github.com/sygel-technology/sy-server-backend",
     "development_status": "Production/Stable",
