@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo-addon-base_old_migration_fields>=16.0dev,<16.1dev',
         'odoo-addon-file_download>=16.0dev,<16.1dev',
+        'odoo-addon-model_access_restriction>=16.0dev,<16.1dev',
         'odoo-addon-odoo_2_odoo_data_transfer>=16.0dev,<16.1dev',
         'odoo-addon-reports_font_size>=16.0dev,<16.1dev',
     ],
