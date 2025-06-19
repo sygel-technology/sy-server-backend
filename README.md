@@ -25,7 +25,7 @@ addon | version | maintainers | summary
 [file_download](file_download/) | 16.0.1.0.0 |  | Download file
 [model_access_restriction](model_access_restriction/) | 16.0.1.0.0 | [![tisho99](https://github.com/tisho99.png?size=30px)](https://github.com/tisho99) | New type of access rule to restrict permissions based on groups
 [odoo_2_odoo_data_transfer](odoo_2_odoo_data_transfer/) | 16.0.1.0.0 |  | Generic tools to manage data transfer between Odoos
-[reports_font_size](reports_font_size/) | 16.0.1.0.0 |  | Change reports font size from the document layout configurator
+[reports_font_size](reports_font_size/) | 16.0.2.0.0 |  | Change reports font size from the document layout configurator
 
 [//]: # (end addons)
 
