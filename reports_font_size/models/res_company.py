@@ -1,6 +1,8 @@
 # Copyright 2024 Alberto Martínez <alberto.martinez@sygel.es>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import base64
+
 from odoo import api, fields, models
 
 CSS_UNITS_SELECTION = [
@@ -69,3 +71,18 @@ class ResCompany(models.Model):
         ):
             self._update_asset_style()
         return res
+
+    def _custom_get_asset_style_b64(self):
+        """
+        The calculation of the company's style document is forced, because it is
+        necessary to take into account the document that injects these changes.
+        """
+        company_ids = self.sudo().search([])
+        company_styles = self.env["ir.qweb"]._render(
+            "reports_font_size.styles_company_report",
+            {
+                "company_ids": company_ids,
+            },
+            raise_if_not_found=False,
+        )
+        return base64.b64encode(company_styles.encode())
