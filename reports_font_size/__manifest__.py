@@ -16,5 +16,6 @@
     "data": {
         "templates/report_style_templates.xml",
         "views/base_document_layout.xml",
+        "data/report_layout.xml",
     },
 }
