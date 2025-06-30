@@ -4,7 +4,7 @@
 {
     "name": "Base Old Migration Fields",
     "summary": "Base Old Migration Fields",
-    "version": "17.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Custom",
     "website": "https://github.com/sygel-technology/sy-server-backend",
     "author": "Sygel, Odoo Community Association (OCA)",

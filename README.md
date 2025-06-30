@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[base_old_migration_fields](base_old_migration_fields/) | 17.0.1.0.0 | Base module for the Old Migration Fields modules.
+[base_old_migration_fields](base_old_migration_fields/) | 18.0.1.0.0 | Base module for the Old Migration Fields modules.
 
 
 [//]: # (end addons)
