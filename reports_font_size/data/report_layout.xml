@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--
+    The asset calculation method has been changed to take into account changes in the new style file; otherwise, it only takes into account the web style file and not the inheritance.
+    -->
+    <record id="web.asset_styles_company_report" model="ir.attachment">
+        <field
+            name="datas"
+            model="res.company"
+            eval="obj()._custom_get_asset_style_b64()"
+        />
+    </record>
+</odoo>
