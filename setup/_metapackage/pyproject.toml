@@ -1,11 +1,11 @@
 [project]
-name = "base_old_migration_fields"
-version = "17.0.20241031.0"
+name = "odoo-addons-sygel-technology-sy-server-backend"
+version = "18.0.20250630.0"
 dependencies = [
-    "odoo-addon-base_old_migration_fields>=17.0dev,<17.1dev",
+    "odoo-addon-base_old_migration_fields==18.0.*",
 ]
 classifiers=[
     "Programming Language :: Python",
     "Framework :: Odoo",
-    "Framework :: Odoo :: 17.0",
+    "Framework :: Odoo :: 18.0",
 ]

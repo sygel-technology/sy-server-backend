@@ -19,10 +19,9 @@ Odoo Server Backend Addons
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
-[base_old_migration_fields](base_old_migration_fields/) | 18.0.1.0.0 | Base module for the Old Migration Fields modules.
-
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[base_old_migration_fields](base_old_migration_fields/) | 18.0.1.0.0 |  | Base Old Migration Fields
 
 [//]: # (end addons)
 
