@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="view_external_api_tree" model="ir.ui.view">
+        <field name="name">external.api.tree</field>
+        <field name="model">external.api.config</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="base_url" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_external_api_form" model="ir.ui.view">
+        <field name="name">external.api.form</field>
+        <field name="model">external.api.config</field>
+        <field name="arch" type="xml">
+            <form string="External API">
+                <header>
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        options="{'clickable': '1'}"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="state" />
+                        <field name="base_url" />
+                        <field name="authentication_method" />
+                        <field name="enable_logs" />
+                    </group>
+                    <notebook>
+                        <page
+                            string="Basic Auth"
+                            invisible="authentication_method != 'basic'"
+                        >
+                            <group>
+                                <field
+                                    name="auth_basic_user"
+                                    required="authentication_method == 'basic'"
+                                />
+                                <field
+                                    name="auth_basic_passwd"
+                                    required="authentication_method == 'basic'"
+                                    password="True"
+                                />
+                            </group>
+                        </page>
+                        <page
+                            string="API Key"
+                            invisible="authentication_method != 'apikey'"
+                        >
+                            <group>
+                                <field
+                                    name="auth_apikey_key"
+                                    required="authentication_method == 'apikey'"
+                                />
+                                <field
+                                    name="auth_apikey_value"
+                                    required="authentication_method == 'apikey'"
+                                    password="True"
+                                />
+                            </group>
+                        </page>
+                        <page string="Job Config">
+                            <group>
+                                <field name="job_delay_seconds" />
+                                <field name="job_max_retries" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_external_api" model="ir.actions.act_window">
+        <field name="name">External APIs</field>
+        <field name="res_model">external.api.config</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

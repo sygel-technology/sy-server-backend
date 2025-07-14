@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <menuitem
+        id="external_api_parent_menu"
+        name="External API"
+        parent="base.menu_custom"
+    />
+
+    <menuitem
+        id="external_api_children_menu"
+        name="External API Configurations"
+        parent="external_api_parent_menu"
+        action="action_external_api"
+    />
+
+
+    <menuitem
+        id="external_api_logs_menu"
+        name="External API Logs"
+        parent="external_api_parent_menu"
+        action="api_log_action"
+    />
+
+</odoo>
