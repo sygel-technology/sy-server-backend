@@ -3,7 +3,7 @@
 
 {
     "name": "File download",
-    "version": "16.0.1.0.0",
+    "version": "17.0.1.0.0",
     "sequence": 14,
     "summary": "Download file",
     "author": "Sygel",
