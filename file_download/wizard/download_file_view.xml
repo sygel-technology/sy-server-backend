@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="wizard_file_download" model="ir.ui.view">
+        <field name="name">Download File</field>
+        <field name="model">file.download.model</field>
+        <field name="arch" type="xml">
+            <form string="Download File">
+                <field name="name" invisible="1" />
+                <div>
+                    <h2>File Complete</h2>
+                    <p>Here is the  file: <field
+                            name="data"
+                            readonly="1"
+                            filename="name"
+                        /></p>
+                </div>
+                <div invisible="comments in ['', False, None]">
+                    <h2>Comments</h2>
+                    <field name="comments" readonly="1" />
+                </div>
+                <footer>
+                    <button
+                        special="cancel"
+                        string="Close"
+                        type="object"
+                        class="btn-default"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_lang_export" model="ir.actions.act_window">
+        <field name="name">Download File Action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">file.download.model</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
