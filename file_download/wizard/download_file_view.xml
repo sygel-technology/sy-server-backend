@@ -14,7 +14,7 @@
                             filename="name"
                         /></p>
                 </div>
-                <div attrs="{'invisible':[('comments', 'in', ('', False, None))]}">
+                <div invisible="comments in ['', False, None]">
                     <h2>Comments</h2>
                     <field name="comments" readonly="1" />
                 </div>
