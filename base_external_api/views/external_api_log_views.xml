@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="view_api_log_tree" model="ir.ui.view">
+        <field name="name">external.api.log.tree</field>
+        <field name="model">external.api.log</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false" delete="false">
+                <field name="id" />
+                <field name="api_id" />
+                <field name="datetime" />
+                <field name="status" />
+                <field name="status_code" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_api_log_form" model="ir.ui.view">
+        <field name="name">external.api.log.form</field>
+        <field name="model">external.api.log</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="" />
+                </header>
+                <sheet>
+                    <group string="Request">
+                        <field name="api_id" />
+                        <field name="datetime" />
+                        <field name="executed_request" />
+                        <field name="user_id" />
+                        <field name="execution_record" />
+                        <field name="job_id" invisible="not job_id" />
+                    </group>
+                    <group string="Response">
+                        <field name="status" />
+                        <field name="status_code" />
+                        <field
+                            name="response"
+                            invisible="status in ['pending', 'success']"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_api_log_search" model="ir.ui.view">
+        <field name="name">external.api.log.search</field>
+        <field name="model">external.api.log</field>
+        <field name="arch" type="xml">
+            <search string="Search API Logs">
+                <filter
+                    string="Errors"
+                    name="errors"
+                    domain="[('status','in',['http_error', 'exception'])]"
+                />
+                <filter
+                    string="Pending"
+                    name="pending"
+                    domain="[('status','=','pending')]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="API"
+                        name="group_api"
+                        context="{'group_by':'api_id'}"
+                    />
+                    <filter
+                        string="Status"
+                        name="group_status"
+                        context="{'group_by':'status'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="api_log_action" model="ir.actions.act_window">
+        <field name="name">External API Logs</field>
+        <field name="res_model">external.api.log</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

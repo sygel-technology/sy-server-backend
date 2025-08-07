@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+
+    <record id="external_api_test_configuration" model="external.api.config">
+        <field name="name">Test</field>
+        <field name="base_url">https://www.test.com/test/</field>
+    </record>
+
+</odoo>

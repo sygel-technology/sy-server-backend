@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+external_api_group,external_api_group,model_external_api_config,base.group_system,1,1,1,1
+external_api_log_group_admin,external_api_log_group_admin,model_external_api_log,base.group_system,1,1,1,1
+external_api_log_group_user,external_api_log_group_user,model_external_api_log,base.group_user,0,0,1,0
