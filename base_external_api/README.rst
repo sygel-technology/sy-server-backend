@@ -83,6 +83,13 @@ The code of the first example would look like this:
                    )
            return res
 
+Known issues / Roadmap
+======================
+
+-  Unit tests of the connection and authorization should be added
+-  The \_update_log() function should be removed, and the log should be
+   created with all the values.
+
 Bug Tracker
 ===========
 
