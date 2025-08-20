@@ -78,7 +78,7 @@ class ExternalApiConfig(models.Model):
             res["auth"] = (self.auth_basic_user, self.auth_basic_passwd)
         return res
 
-    def _create_log(self, method, url, **kwargs):
+    def _create_log(self, method, url):
         if self.enable_logs:
             ctx = self.env.context
             active_id = ctx.get("active_id") or ctx.get("params", {}).get("id")
@@ -88,7 +88,7 @@ class ExternalApiConfig(models.Model):
                     "api_id": self.id,
                     "datetime": datetime.datetime.now(),
                     "user_id": self.env.user.id,
-                    "executed_request": f"requests.{method}({url}, {kwargs})",
+                    "executed_request": f"requests.{method}({url})",
                     "execution_record": f"{active_model}({active_id})"
                     if active_model and active_id
                     else False,
@@ -140,7 +140,7 @@ class ExternalApiConfig(models.Model):
         else:
             url = self._build_url(url)
             updated_kwargs = self._update_kwargs(**kwargs)
-            log = self._create_log(method, url, **updated_kwargs)
+            log = self._create_log(method, url)
             res = self._call_and_update_log(method, url, log, **updated_kwargs)
         return res
 
@@ -151,7 +151,7 @@ class ExternalApiConfig(models.Model):
         else:
             url = self._build_url(url)
             updated_kwargs = self._update_kwargs(**kwargs)
-            log = self._create_log(method, url, **updated_kwargs)
+            log = self._create_log(method, url)
             job = self.with_delay(
                 eta=self.job_delay_seconds,
                 max_retries=self.job_max_retries,
