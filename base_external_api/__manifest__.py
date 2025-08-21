@@ -3,7 +3,7 @@
 {
     "name": "Base External API",
     "summary": "Tools to manage external api connections.",
-    "version": "17.0.1.0.0",
+    "version": "17.0.1.1.0",
     "website": "https://github.com/sygel-technology/sy-server-backend",
     "author": "Sygel, Odoo Community Association (OCA)",
     "license": "AGPL-3",
