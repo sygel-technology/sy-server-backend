@@ -135,6 +135,7 @@ class ExternalApiConfig(models.Model):
 
     def call(self, method, url, queued=False, **kwargs):
         self.ensure_one()
+        self.env = self.sudo().env
         if self.state != "production":
             res = False
         else:
@@ -146,6 +147,7 @@ class ExternalApiConfig(models.Model):
 
     def queued_call(self, method, url, **kwargs):
         self.ensure_one()
+        self.env = self.sudo().env
         if self.state != "production":
             job = False
         else:
