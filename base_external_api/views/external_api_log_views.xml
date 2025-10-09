@@ -30,6 +30,7 @@
                         <field name="api_id" />
                         <field name="datetime" />
                         <field name="executed_request" />
+                        <field name="executed_request_params" />
                         <field name="user_id" />
                         <field name="execution_record" />
                         <field name="job_id" invisible="not job_id" />

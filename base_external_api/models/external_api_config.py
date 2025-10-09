@@ -78,8 +78,10 @@ class ExternalApiConfig(models.Model):
             res["auth"] = (self.auth_basic_user, self.auth_basic_passwd)
         return res
 
-    def _create_log(self, method, url):
+    def _create_log(self, method, url, **kwargs):
         if self.enable_logs:
+            kwargs.pop("headers", None)
+            kwargs.pop("auth", None)
             ctx = self.env.context
             active_id = ctx.get("active_id") or ctx.get("params", {}).get("id")
             active_model = ctx.get("active_model") or ctx.get("params", {}).get("model")
@@ -89,6 +91,7 @@ class ExternalApiConfig(models.Model):
                     "datetime": datetime.datetime.now(),
                     "user_id": self.env.user.id,
                     "executed_request": f"requests.{method}({url})",
+                    "executed_request_params": kwargs,
                     "execution_record": f"{active_model}({active_id})"
                     if active_model and active_id
                     else False,
@@ -111,10 +114,11 @@ class ExternalApiConfig(models.Model):
                 new_cr.close()
 
     def _call_and_update_log(self, method, url, log, **kwargs):
+        updated_kwargs = self._update_kwargs(**kwargs)
         request_func = getattr(requests, method)
         res = False
         try:
-            res = request_func(url=url, **kwargs)
+            res = request_func(url=url, **updated_kwargs)
         except requests.exceptions.Timeout as error:
             self._update_log(log, {"status": "exception", "response": error}, True)
             raise RetryableJobError(
@@ -140,9 +144,8 @@ class ExternalApiConfig(models.Model):
             res = False
         else:
             url = self._build_url(url)
-            updated_kwargs = self._update_kwargs(**kwargs)
-            log = self._create_log(method, url)
-            res = self._call_and_update_log(method, url, log, **updated_kwargs)
+            log = self._create_log(method, url, **kwargs)
+            res = self._call_and_update_log(method, url, log, **kwargs)
         return res
 
     def queued_call(self, method, url, **kwargs):
@@ -152,12 +155,11 @@ class ExternalApiConfig(models.Model):
             job = False
         else:
             url = self._build_url(url)
-            updated_kwargs = self._update_kwargs(**kwargs)
-            log = self._create_log(method, url)
+            log = self._create_log(method, url, **kwargs)
             job = self.with_delay(
                 eta=self.job_delay_seconds,
                 max_retries=self.job_max_retries,
-            )._call_and_update_log(method, url, log, **updated_kwargs)
+            )._call_and_update_log(method, url, log, **kwargs)
             self._update_log(
                 log,
                 {"job_id": self.env["queue.job"].search([("uuid", "=", job.uuid)]).id},

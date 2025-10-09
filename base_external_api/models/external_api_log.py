@@ -59,6 +59,9 @@ class ExternalAPILog(models.Model):
     executed_request = fields.Char(
         readonly=True,
     )
+    executed_request_params = fields.Char(
+        readonly=True,
+    )
     execution_record = fields.Char(
         readonly=True,
     )
