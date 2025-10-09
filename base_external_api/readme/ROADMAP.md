@@ -1,2 +1,1 @@
 - Unit tests of the connection and authorization should be added
-- The _update_log() function should be removed, and the log should be created with all the values.

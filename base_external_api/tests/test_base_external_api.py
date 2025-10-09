@@ -20,8 +20,11 @@ class TestBaseExternalAPI(TransactionCase):
 
     def test_queued_call(self):
         job = self.api.queued_call(method="post", url="/test")
+        job.perform()
         log = self.env["external.api.log"].search([("api_id", "=", self.api.id)])
         self.assertTrue(job)
+        self.assertTrue(log)
+        self.assertEqual(log.status, "exception")
         self.assertEqual(job.uuid, log.job_id.uuid)
 
     def test_api_disabled(self):

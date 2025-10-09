@@ -78,74 +78,83 @@ class ExternalApiConfig(models.Model):
             res["auth"] = (self.auth_basic_user, self.auth_basic_passwd)
         return res
 
-    def _create_log(self, method, url, **kwargs):
-        if self.enable_logs:
-            kwargs.pop("headers", None)
-            kwargs.pop("auth", None)
-            ctx = self.env.context
-            active_id = ctx.get("active_id") or ctx.get("params", {}).get("id")
-            active_model = ctx.get("active_model") or ctx.get("params", {}).get("model")
-            res = self.env["external.api.log"].create(
-                {
-                    "api_id": self.id,
-                    "datetime": datetime.datetime.now(),
-                    "user_id": self.env.user.id,
-                    "executed_request": f"requests.{method}({url})",
-                    "executed_request_params": kwargs,
-                    "execution_record": f"{active_model}({active_id})"
-                    if active_model and active_id
-                    else False,
-                }
-            )
-        else:
-            res = False
-        return res
+    def _get_log_values(self, method, url, **kwargs):
+        kwargs.pop("headers", None)
+        kwargs.pop("auth", None)
+        ctx = self.env.context
+        active_id = ctx.get("active_id") or ctx.get("params", {}).get("id")
+        active_model = ctx.get("active_model") or ctx.get("params", {}).get("model")
+        job_uuid = self.env.context.get("job_uuid", False)
+        return {
+            "api_id": self.id,
+            "datetime": datetime.datetime.now(),
+            "user_id": self.env.user.id,
+            "executed_request": f"requests.{method}({url})",
+            "executed_request_params": kwargs,
+            "execution_record": f"{active_model}({active_id})"
+            if active_model and active_id
+            else False,
+            "job_id": self.env["queue.job"].search([("uuid", "=", job_uuid)]).id
+            if job_uuid
+            else False,
+        }
 
-    @api.model
-    def _update_log(self, log, vals, new_cursor=False):
+    def _create_log(self, method, url, new_cursor=False, status_vals=False, **kwargs):
+        log_model = self.env["external.api.log"]
         if self.enable_logs:
             if new_cursor:
                 new_cr = Registry(self.env.cr.dbname).cursor()
                 env = api.Environment(new_cr, self.env.uid, self.env.context)
-                log = env["external.api.log"].browse(log.id)
-            log.update(vals)
+                log_model = env["external.api.log"]
+            log_values = self._get_log_values(method, url, **kwargs)
+            if status_vals:
+                log_values.update(status_vals)
+            res = log_model.create(log_values)
             if new_cursor:
                 new_cr.commit()
                 new_cr.close()
+        else:
+            res = log_model
+        return res
 
-    def _call_and_update_log(self, method, url, log, **kwargs):
+    def _call_and_create_log(self, method, url, **kwargs):
         updated_kwargs = self._update_kwargs(**kwargs)
+        url = self._build_url(url)
         request_func = getattr(requests, method)
         res = False
+        new_cursor = False
+        status_vals = {}
         try:
             res = request_func(url=url, **updated_kwargs)
-        except requests.exceptions.Timeout as error:
-            self._update_log(log, {"status": "exception", "response": error}, True)
+        except requests.exceptions.Timeout as exception:
+            new_cursor = True
+            status_vals.update({"status": "exception", "response": exception})
             raise RetryableJobError(
                 "Timeout connecting remote server. Must be retried later"
-            ) from error
-        except requests.exceptions.RequestException as error:
-            self._update_log(log, {"status": "exception", "response": error})
+            ) from exception
+        except requests.exceptions.RequestException as exception:
+            status_vals.update({"status": "exception", "response": exception})
         else:
-            self._update_log(
-                log,
+            status_vals.update(
                 {
                     "status": "success" if res.ok else "http_error",
                     "status_code": res.status_code,
                     "response": res.text if not res.ok else "",
-                },
+                }
+            )
+        finally:
+            self._create_log(
+                method, url, new_cursor=new_cursor, status_vals=status_vals, **kwargs
             )
         return res
 
-    def call(self, method, url, queued=False, **kwargs):
+    def call(self, method, url, **kwargs):
         self.ensure_one()
         self.env = self.sudo().env
         if self.state != "production":
             res = False
         else:
-            url = self._build_url(url)
-            log = self._create_log(method, url, **kwargs)
-            res = self._call_and_update_log(method, url, log, **kwargs)
+            res = self._call_and_create_log(method, url, **kwargs)
         return res
 
     def queued_call(self, method, url, **kwargs):
@@ -154,14 +163,8 @@ class ExternalApiConfig(models.Model):
         if self.state != "production":
             job = False
         else:
-            url = self._build_url(url)
-            log = self._create_log(method, url, **kwargs)
             job = self.with_delay(
                 eta=self.job_delay_seconds,
                 max_retries=self.job_max_retries,
-            )._call_and_update_log(method, url, log, **kwargs)
-            self._update_log(
-                log,
-                {"job_id": self.env["queue.job"].search([("uuid", "=", job.uuid)]).id},
-            )
+            ).call(method, url, **kwargs)
         return job

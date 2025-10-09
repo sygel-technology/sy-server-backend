@@ -21,12 +21,11 @@ class ExternalAPILog(models.Model):
     )
     status = fields.Selection(
         selection=[
-            ("pending", "Pending"),
             ("success", "Success"),
             ("http_error", "Http Error"),
             ("exception", "Exception"),
         ],
-        default="pending",
+        default="exception",
         required=True,
         readonly=True,
         help="Outcome of the HTTP/SOAP request:"
