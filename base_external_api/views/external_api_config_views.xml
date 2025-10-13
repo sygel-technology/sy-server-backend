@@ -69,7 +69,9 @@
                         </page>
                         <page string="Job Config">
                             <group>
+                                <field name="job_channel_id" />
                                 <field name="job_delay_seconds" />
+                                <field name="job_priority" />
                                 <field name="job_max_retries" />
                             </group>
                         </page>

@@ -49,10 +49,17 @@ class ExternalApiConfig(models.Model):
     auth_apikey_key = fields.Char(string="Header", default="api-key")
     auth_apikey_value = fields.Char(string="APIKey value")
 
+    job_channel_id = fields.Many2one(comodel_name="queue.job.channel")
     job_delay_seconds = fields.Integer(string="Job Delay (Seconds)")
+    job_priority = fields.Integer(default=10)
     job_max_retries = fields.Integer(default=5)
 
     _sql_constraints = [
+        (
+            "job_priority",
+            "CHECK (job_priority >= 0)",
+            "Max retries should be greater than 0 or equal",
+        ),
         (
             "job_max_retries",
             "CHECK (job_max_retries > 0)",
@@ -164,7 +171,11 @@ class ExternalApiConfig(models.Model):
             job = False
         else:
             job = self.with_delay(
-                eta=self.job_delay_seconds,
-                max_retries=self.job_max_retries,
+                priority=kwargs.get("job_priority", False) or self.job_priority,
+                eta=kwargs.get("job_delay_seconds", False) or self.job_delay_seconds,
+                max_retries=kwargs.get("job_max_retries", False)
+                or self.job_max_retries,
+                channel=kwargs.get("job_channel", False)
+                or self.job_channel_id.complete_name,
             ).call(method, url, **kwargs)
         return job

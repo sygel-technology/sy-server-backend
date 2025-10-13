@@ -90,7 +90,10 @@ The code of the first example would look like this:
 Known issues / Roadmap
 ======================
 
--  Unit tests of the connection and authorization should be added
+-  This module could be extended to add the external_api_endpoint model,
+   with the purpose to store in the database the diferent urls of the
+   same API we can call, and some configuration data or extra
+   information.
 
 Bug Tracker
 ===========
