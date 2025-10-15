@@ -1,2 +1,1 @@
-- Unit tests of the connection and authorization should be added
-- The _update_log() function should be removed, and the log should be created with all the values.
+- This module could be extended to add the external_api_endpoint model, with the purpose to store in the database the diferent urls of the same API we can call, and some configuration data or extra information.

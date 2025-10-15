@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =================
 Base External API
 =================
@@ -13,7 +17,7 @@ Base External API
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-sygel--technology%2Fsy--server--backend-lightgray.png?logo=github
@@ -27,10 +31,10 @@ for making external API calls.
 
 With this module, you can:
 
-- Create an external API record and configure its URL and
-  authentication_method parameters
-- Log every API call
-- Make asynchronous calls
+-  Create an external API record and configure its URL and
+   authentication_method parameters
+-  Log every API call
+-  Make asynchronous calls
 
 **Table of contents**
 
@@ -86,9 +90,10 @@ The code of the first example would look like this:
 Known issues / Roadmap
 ======================
 
-- Unit tests of the connection and authorization should be added
-- The \_update_log() function should be removed, and the log should be
-  created with all the values.
+-  This module could be extended to add the external_api_endpoint model,
+   with the purpose to store in the database the diferent urls of the
+   same API we can call, and some configuration data or extra
+   information.
 
 Bug Tracker
 ===========
@@ -111,11 +116,11 @@ Authors
 Contributors
 ------------
 
-- `Sygel <https://www.sygel.es>`__:
+-  `Sygel <https://www.sygel.es>`__:
 
-  - Alberto Martínez
-  - Valentin Vinagre
-  - Harald Panten
+   -  Alberto Martínez
+   -  Valentin Vinagre
+   -  Harald Panten
 
 Maintainers
 -----------
