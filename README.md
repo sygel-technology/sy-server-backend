@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[base_external_api](base_external_api/) | 17.0.1.1.0 |  | Tools to manage external api connections.
+[base_external_api](base_external_api/) | 17.0.1.2.0 |  | Tools to manage external api connections.
 [base_old_migration_fields](base_old_migration_fields/) | 17.0.1.0.0 |  | Base Old Migration Fields
 [file_download](file_download/) | 17.0.1.0.0 |  | Download file
 [odoo_2_odoo_data_transfer](odoo_2_odoo_data_transfer/) | 17.0.1.3.0 |  | Generic tools to manage data transfer between Odoos
