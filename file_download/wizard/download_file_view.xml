@@ -9,10 +9,10 @@
                 <div>
                     <h2>File Complete</h2>
                     <p>Here is the  file: <field
-                            name="data"
-                            readonly="1"
-                            filename="name"
-                        /></p>
+                        name="data"
+                        readonly="1"
+                        filename="name"
+                    /></p>
                 </div>
                 <div invisible="comments in ['', False, None]">
                     <h2>Comments</h2>
