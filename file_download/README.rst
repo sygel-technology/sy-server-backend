@@ -17,7 +17,7 @@ File download
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-sygel--technology%2Fsy--server--backend-lightgray.png?logo=github
-    :target: https://github.com/sygel-technology/sy-server-backend/tree/17.0/file_download
+    :target: https://github.com/sygel-technology/sy-server-backend/tree/18.0/file_download
     :alt: sygel-technology/sy-server-backend
 
 |badge1| |badge2| |badge3|
@@ -37,20 +37,20 @@ To use this module, you need to:
 1. Create a model that inherits from file.download.model.
 2. Override the following functions:
 
-   - **\`get_filename\`**: Return the desired file name.
+   -  **\`get_filename\`**: Return the desired file name.
 
-   - **\`get_content\`**: Return the binary string file to download. For
-     example:
+   -  **\`get_content\`**: Return the binary string file to download.
+      For example:
 
-     .. code:: python
+      .. code:: python
 
-        from io import StringIO
+         from io import StringIO
 
-        def get_content(self):
-            output = StringIO()
-            file.save(output)
-            output.seek(0)
-            return output.read()
+         def get_content(self):
+             output = StringIO()
+             file.save(output)
+             output.seek(0)
+             return output.read()
 
 3. After this, create a wizard with a button that calls the function
    set_file. This function will open a new wizard with the downloadable
@@ -62,7 +62,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/sygel-technology/sy-server-backend/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/sygel-technology/sy-server-backend/issues/new?body=module:%20file_download%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/sygel-technology/sy-server-backend/issues/new?body=module:%20file_download%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -77,14 +77,14 @@ Authors
 Contributors
 ------------
 
-- `Sygel <https://www.sygel.es>`__:
+-  `Sygel <https://www.sygel.es>`__:
 
-  - Valentín Vinagre
-  - Ángel García de la Chica Herrera
+   -  Valentín Vinagre
+   -  Ángel García de la Chica Herrera
 
 Maintainers
 -----------
 
-This module is part of the `sygel-technology/sy-server-backend <https://github.com/sygel-technology/sy-server-backend/tree/17.0/file_download>`_ project on GitHub.
+This module is part of the `sygel-technology/sy-server-backend <https://github.com/sygel-technology/sy-server-backend/tree/18.0/file_download>`_ project on GitHub.
 
 You are welcome to contribute.

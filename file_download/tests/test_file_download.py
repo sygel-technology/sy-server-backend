@@ -8,14 +8,18 @@ from odoo.tests import common
 
 class TestFileDownload(common.TransactionCase):
     @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         super().setUpClass()
-        cls.loader = FakeModelLoader(cls.env, cls.__module__)
-        cls.loader.backup_registry()
-        cls.addClassCleanup(cls.loader.restore_registry)
+        self.loader = FakeModelLoader(self.env, self.__module__)
+        self.loader.backup_registry()
+        self.addClassCleanup(self.loader.restore_registry)
         from .models.report import ReportTest
 
-        cls.loader.update_registry((ReportTest,))
+        self.loader.update_registry((ReportTest,))
+
+        def tearDown(self):
+            self.loader.restore_registry()
+            super().tearDown()
 
     def test_download_file(self):
         wizard = self.env["report.test"].create({})
