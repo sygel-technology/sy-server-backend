@@ -4,7 +4,7 @@
 {
     "name": "Html fields in document layout configuration",
     "summary": "Html fields in document layout configuration",
-    "version": "15.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Custom",
     "website": "https://github.com/sygel-technology/sy-server-backend",
     "author": "Sygel, Odoo Community Association (OCA)",
