@@ -7,7 +7,7 @@
         <field name="model">base.document.layout</field>
         <field name="inherit_id" ref="web.view_base_document_layout" />
         <field name="arch" type="xml">
-             <xpath expr="//field[@name='report_header']" position="attributes">
+            <xpath expr="//field[@name='report_header']" position="attributes">
                 <attribute name="widget">html</attribute>
                 <attribute name="class">oe-bordered-editor</attribute>
                 <attribute name="options">{'codeview': true }</attribute>
