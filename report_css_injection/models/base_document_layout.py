@@ -41,4 +41,5 @@ class BaseDocumentLayout(models.TransientModel):
 
     @api.depends(*CSS_FIELDS)
     def _compute_preview(self):
+        # EXTENDS 'web' to add dependencies
         return super()._compute_preview()

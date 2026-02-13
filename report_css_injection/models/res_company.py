@@ -58,6 +58,7 @@ class ResCompany(models.Model):
             rec.computed_report_css = self._compute_computed_report_css_common(rec)
 
     def write(self, values):
+        """Force a the update of the assets when writting on the new style fields"""
         res = super().write(values)
         old_style_fields = {
             "external_report_layout_id",
@@ -79,7 +80,7 @@ class ResCompany(models.Model):
         """
         company_ids = self.sudo().search([])
         company_styles = self.env["ir.qweb"]._render(
-            "reports_font_size.styles_company_report",
+            "report_css_injection.styles_company_report",
             {
                 "company_ids": company_ids,
             },
