@@ -23,7 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [base_old_migration_fields](base_old_migration_fields/) | 16.0.1.0.0 |  | Base Old Migration Fields
 [file_download](file_download/) | 16.0.1.0.0 |  | Download file
-[model_access_restriction](model_access_restriction/) | 16.0.1.0.0 | [![tisho99](https://github.com/tisho99.png?size=30px)](https://github.com/tisho99) | New type of access rule to restrict permissions based on groups
+[model_access_restriction](model_access_restriction/) | 16.0.1.0.0 | <a href='https://github.com/tisho99'><img src='https://github.com/tisho99.png' width='32' height='32' style='border-radius:50%;' alt='tisho99'/></a> | New type of access rule to restrict permissions based on groups
 [odoo_2_odoo_data_transfer](odoo_2_odoo_data_transfer/) | 16.0.1.0.0 |  | Generic tools to manage data transfer between Odoos
 [reports_font_size](reports_font_size/) | 16.0.2.0.0 |  | Change reports font size from the document layout configurator
 
