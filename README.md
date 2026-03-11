@@ -24,7 +24,7 @@ addon | version | maintainers | summary
 [base_old_migration_fields](base_old_migration_fields/) | 15.0.1.0.1 |  | Base Old Migration Fields
 [file_download](file_download/) | 15.0.1.0.0 |  | Download file
 [html_fields_document_layout_configuration](html_fields_document_layout_configuration/) | 15.0.1.0.0 |  | Html fields in document layout configuration
-[model_access_restriction](model_access_restriction/) | 15.0.1.0.0 | [![tisho99](https://github.com/tisho99.png?size=30px)](https://github.com/tisho99) | New type of access rule to restrict permissions based on groups
+[model_access_restriction](model_access_restriction/) | 15.0.1.0.0 | <a href='https://github.com/tisho99'><img src='https://github.com/tisho99.png' width='32' height='32' style='border-radius:50%;' alt='tisho99'/></a> | New type of access rule to restrict permissions based on groups
 
 [//]: # (end addons)
 
