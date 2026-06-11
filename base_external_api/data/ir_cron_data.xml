@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Alberto Martínez <alberto.martinez@sygel.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+
+    <record id="api_logs_cleanup" model="ir.cron">
+        <field name="name">External Api Logs Cleanup</field>
+        <field name="model_id" ref="base_external_api.model_external_api_log" />
+        <field name="state">code</field>
+        <field name="code">model.log_cleanup_cron()</field>
+        <field name='interval_number'>30</field>
+        <field name='interval_type'>minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="active">1</field>
+    </record>
+
+</odoo>

@@ -52,7 +52,16 @@ class TestBaseExternalAPI(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.api = cls.env.ref("base_external_api.external_api_test_configuration")
+        cls.api2 = cls.api.copy({"name": "Test2"})
         cls.api.state = "production"
+        cls.log_len_before = 100
+        for _ in range(cls.log_len_before):
+            cls.env["external.api.log"].create(
+                {
+                    "api_id": cls.api2.id,
+                    "status": "success",
+                }
+            )
 
     def test_basic_call_exception(self):
         self.api.call(method="post", url="/test")
@@ -204,3 +213,13 @@ class TestBaseExternalAPI(TransactionCase):
         self.assertEqual(log.status, "success")
         self.assertEqual(log.status_code, 200)
         self.assertTrue(res.ok)
+
+    def test_log_deletion(self):
+        self.env["external.api.log"].log_cleanup_cron(
+            batch_size=10,
+            days_to_keep=0,
+            hour_start=0,
+            hour_end=24,
+            new_cursor=False,
+        )
+        self.assertEqual(self.env["external.api.log"].search_count([]), 0)

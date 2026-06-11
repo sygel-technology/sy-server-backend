@@ -383,6 +383,7 @@ for making external API calls.</p>
 authentication_method parameters</li>
 <li>Log every API call</li>
 <li>Make asynchronous calls</li>
+<li>Delete the API logs with an scheduled action</li>
 </ul>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
@@ -439,6 +440,26 @@ class ResPartner(models.Model):
                 )
         return res
 </pre>
+<p>To configure the schedule action that deletes logs you need to:</p>
+<ol class="arabic simple">
+<li>Go to Settings / Technical / Scheduled Actions</li>
+<li>Go to the ‘External Api Logs Cleanup’ scheduled action</li>
+<li>You can edit the execution interval or the function params</li>
+<li>You can manually test the scheduled action.</li>
+<li>You can manually edit the parameters of the scheduled action’s
+function to customize the behaviour. Important fields:<ul>
+<li>server_timeout_seconds: Max time for the scheduled action. If you
+have edited your server’s timeout_seconds, you’ll have to manually
+edit this field</li>
+<li>batch_size: Number of records to delete at the same time. Take
+into account, that this value should be low enough to delete at
+least one batch in the server_timeout_seconds</li>
+<li>model: you can edit the model parameter to delete other sytem logs</li>
+<li>write_logs: If you set this to True, logs will be printed showing
+the number of deleted logs</li>
+</ul>
+</li>
+</ol>
 </div>
 <div class="section" id="known-issues-roadmap">
 <h2><a class="toc-backref" href="#toc-entry-2">Known issues / Roadmap</a></h2>
@@ -447,6 +468,10 @@ class ResPartner(models.Model):
 with the purpose to store in the database the diferent urls of the
 same API we can call, and some configuration data or extra
 information.</li>
+<li>This module does have a custom logger that can print logs in your
+console or log file. You can manually enable/disable those logs
+(Explained in the USAGE section). However, developing an upgrade to
+simplify the log enable/disable whould be a nice improvement.</li>
 </ul>
 </div>
 <div class="section" id="bug-tracker">

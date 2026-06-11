@@ -5,7 +5,7 @@
     "summary": "Tools to manage external api connections.",
     "version": "17.0.1.2.1",
     "website": "https://github.com/sygel-technology/sy-server-backend",
-    "author": "Sygel, Odoo Community Association (OCA)",
+    "author": "Sygel",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
@@ -15,6 +15,7 @@
     "external_dependencies": {"python": ["requests"]},
     "data": [
         "security/ir.model.access.csv",
+        "data/ir_cron_data.xml",
         "views/external_api_config_views.xml",
         "views/external_api_log_views.xml",
         "views/external_api_menus.xml",
