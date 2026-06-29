@@ -38,3 +38,16 @@ class ResPartner(models.Model):
                 )
         return res
 ```
+
+
+To configure the schedule action that deletes logs you need to:
+
+1. Go to Settings / Technical /  Scheduled Actions
+2. Go to the 'External Api Logs Cleanup' scheduled action
+3. You can edit the execution interval or the function params
+4. You can manually test the scheduled action.
+5. You can manually edit the parameters of the scheduled action's function to customize the behaviour. Important fields:
+    - server_timeout_seconds: Max time for the scheduled action. If you have edited your server's timeout_seconds, you'll have to manually edit this field
+    - batch_size: Number of records to delete at the same time. Take into account, that this value should be low enough to delete at least one batch in the server_timeout_seconds
+    - model: you can edit the model parameter to delete other sytem logs
+    - write_logs: If you set this to True, logs will be printed showing the number of deleted logs

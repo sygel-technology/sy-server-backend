@@ -5,3 +5,4 @@ With this module, you can:
 - Create an external API record and configure its URL and authentication_method parameters
 - Log every API call
 - Make asynchronous calls
+- Delete the API logs with an scheduled action

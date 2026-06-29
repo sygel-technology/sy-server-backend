@@ -31,10 +31,11 @@ for making external API calls.
 
 With this module, you can:
 
-- Create an external API record and configure its URL and
-  authentication_method parameters
-- Log every API call
-- Make asynchronous calls
+-  Create an external API record and configure its URL and
+   authentication_method parameters
+-  Log every API call
+-  Make asynchronous calls
+-  Delete the API logs with an scheduled action
 
 **Table of contents**
 
@@ -87,13 +88,37 @@ The code of the first example would look like this:
                    )
            return res
 
+To configure the schedule action that deletes logs you need to:
+
+1. Go to Settings / Technical / Scheduled Actions
+2. Go to the 'External Api Logs Cleanup' scheduled action
+3. You can edit the execution interval or the function params
+4. You can manually test the scheduled action.
+5. You can manually edit the parameters of the scheduled action's
+   function to customize the behaviour. Important fields:
+
+   -  server_timeout_seconds: Max time for the scheduled action. If you
+      have edited your server's timeout_seconds, you'll have to manually
+      edit this field
+   -  batch_size: Number of records to delete at the same time. Take
+      into account, that this value should be low enough to delete at
+      least one batch in the server_timeout_seconds
+   -  model: you can edit the model parameter to delete other sytem logs
+   -  write_logs: If you set this to True, logs will be printed showing
+      the number of deleted logs
+
 Known issues / Roadmap
 ======================
 
-- This module could be extended to add the external_api_endpoint model,
-  with the purpose to store in the database the diferent urls of the
-  same API we can call, and some configuration data or extra
-  information.
+-  This module could be extended to add the external_api_endpoint model,
+   with the purpose to store in the database the diferent urls of the
+   same API we can call, and some configuration data or extra
+   information.
+
+-  This module does have a custom logger that can print logs in your
+   console or log file. You can manually enable/disable those logs
+   (Explained in the USAGE section). However, developing an upgrade to
+   simplify the log enable/disable whould be a nice improvement.
 
 Bug Tracker
 ===========
@@ -116,11 +141,11 @@ Authors
 Contributors
 ------------
 
-- `Sygel <https://www.sygel.es>`__:
+-  `Sygel <https://www.sygel.es>`__:
 
-  - Alberto Martínez
-  - Valentin Vinagre
-  - Harald Panten
+   -  Alberto Martínez
+   -  Valentin Vinagre
+   -  Harald Panten
 
 Maintainers
 -----------
