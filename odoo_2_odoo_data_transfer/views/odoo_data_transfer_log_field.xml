@@ -32,7 +32,7 @@
             <field name="remote_source_field" position="after">
                 <field name="log_id" column_invisible="1" />
             </field>
-            <xpath expr="//tree" position="attributes">
+            <xpath expr="//list" position="attributes">
                 <attribute name="create">false</attribute>
             </xpath>
         </field>

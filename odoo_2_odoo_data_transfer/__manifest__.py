@@ -3,10 +3,10 @@
 {
     "name": "Odoo 2 Odoo Data Transfer",
     "summary": "Generic tools to manage data transfer between Odoos",
-    "version": "17.0.1.3.0",
+    "version": "18.0.1.0.0",
     "category": "Tools",
     "website": "https://github.com/sygel-technology/sy-server-backend",
-    "author": "Sygel, Odoo Community Association (OCA)",
+    "author": "Sygel",
     "license": "AGPL-3",
     "application": False,
     "installable": True,

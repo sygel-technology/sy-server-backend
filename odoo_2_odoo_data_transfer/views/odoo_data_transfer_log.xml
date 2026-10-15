@@ -6,7 +6,7 @@
         <field name="name">odoo.data.transfer.log.form.tree</field>
         <field name="model">odoo.data.transfer.log</field>
         <field name="arch" type="xml">
-            <tree create="false">
+            <list create="false">
                 <field name="date_start" />
                 <field name="remote_source_model_name" />
                 <field
@@ -15,7 +15,7 @@
                 />
                 <field name="state" />
                 <field name="transfered_records_counter" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -93,6 +93,6 @@
     <record id="odoo_data_transfer_log_action" model="ir.actions.act_window">
         <field name="name">Odoo Data Transfer Logs</field>
         <field name="res_model">odoo.data.transfer.log</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 </odoo>

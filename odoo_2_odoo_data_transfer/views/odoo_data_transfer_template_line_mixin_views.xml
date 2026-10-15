@@ -6,7 +6,7 @@
         <field name="name">odoo.data.transfer.template.line.view.tree</field>
         <field name="model">odoo.data.transfer.template.line.mixin</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="remote_source_field" />
                 <field
                     name="local_target_field_id"
@@ -24,7 +24,7 @@
                     context="{'technical_display_name': True}"
                 />
                 <field name="one2many_template_id" optional="hide" />
-            </tree>
+            </list>
         </field>
     </record>
 

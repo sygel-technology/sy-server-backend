@@ -1,4 +1,5 @@
-- Alberto Martínez <alberto.martinez@sygel.es>
-- Manuel Regidor <manuel.regidor@sygel.es>
-- Valentin Vinagre <valentin.vinagre@sygel.es>
-- Harald Panten <harald.panten@sygel.es>
+-   [Sygel](https://www.sygel.es):
+    -   Alberto Martínez
+    -   Manuel Regidor
+    -   Valentín Vinagre
+    -   Harald Panten

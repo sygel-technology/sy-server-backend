@@ -6,11 +6,11 @@
         <field name="name">odoo.data.transfer.log.record.tree</field>
         <field name="model">odoo.data.transfer.log.record</field>
         <field name="arch" type="xml">
-            <tree create="false">
+            <list create="false">
                 <field name="local_id" widget="reference" />
                 <field name="remote_id" />
                 <field name="error_msg" />
-            </tree>
+            </list>
         </field>
     </record>
 
