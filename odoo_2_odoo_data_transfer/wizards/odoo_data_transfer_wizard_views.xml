@@ -2,7 +2,6 @@
 <!-- Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record id="odoo_data_transfer_wizard_form" model="ir.ui.view">
         <field name="name">odoo.data.transfer.wizard.form</field>
         <field name="model">odoo.data.transfer.wizard</field>
@@ -93,5 +92,4 @@
         parent="odoo_data_transfer_menu"
         action="odoo_data_transfer_wizard_action"
     />
-
 </odoo>

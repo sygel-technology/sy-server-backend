@@ -85,10 +85,7 @@
         <field name="name">transfer_line_ids/one2many_template_id/id</field>
         <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
     </record>
-        <record
-        id="default_export_transfer_line_ids_related_model"
-        model="ir.exports.line"
-    >
+    <record id="default_export_transfer_line_ids_related_model" model="ir.exports.line">
         <field name="name">transfer_line_ids/related_model</field>
         <field name="export_id" ref="odoo_2_odoo_data_transfer.default_export" />
     </record>
