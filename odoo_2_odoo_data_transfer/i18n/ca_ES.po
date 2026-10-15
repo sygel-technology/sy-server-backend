@@ -1,0 +1,854 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* odoo_2_odoo_data_transfer
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-15 13:47+0000\n"
+"PO-Revision-Date: 2026-10-15 16:28+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
+
+#. module: odoo_2_odoo_data_transfer
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_wizard_form
+msgid "Accept"
+msgstr "Accepta"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log_record__error_type__already_transfered
+msgid "Already Transfered"
+msgstr "Ja transferits"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__auto_id_mappings
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__auto_id_mappings
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__auto_id_mappings
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__auto_id_mappings
+msgid "Auto Id Mappings"
+msgstr "Mapatges automàtics d'ID"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_odoo_data_transfer_template_mixin
+msgid "Basic Fields for a data transfer between Odoos"
+msgstr "Camps bàsics per a una transferència de dades entre instàncies d'Odoo"
+
+#. module: odoo_2_odoo_data_transfer
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_wizard_form
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/models/odoo_data_transfer_template_line_mixin.py:0
+msgid ""
+"Could not find in the local database the remote record of model '{model2}' "
+"with '{value}' values, asociated to the '{model1}' record to be imported in "
+"the '{field}' field"
+msgstr ""
+"No s'ha pogut trobar a la BD local el registre remot del model '{model2}' "
+"amb els valors '{value}', associat al registre de '{model1}' que s'ha "
+"d'importar al camp '{field}'."
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__local_id
+msgid "Created Record"
+msgstr "Registre creat"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__create_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__create_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__create_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__create_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__create_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__create_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__create_uid
+msgid "Created by"
+msgstr "Creat per"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__create_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__create_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__create_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__create_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__create_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__create_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__create_date
+msgid "Created on"
+msgstr "Creat el"
+
+#. module: odoo_2_odoo_data_transfer
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_log_form
+msgid "Created records"
+msgstr "Registres creats"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__template_id
+msgid "Data transfer template"
+msgstr "Plantilla de transferència de dades"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_odoo_data_transfer_log_field
+msgid "Data transference wizard event field mappings log"
+msgstr "Log de mapatge de camps de l'esdeveniment de transferència de dades."
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_odoo_data_transfer_log
+msgid "Data transference wizard event log"
+msgstr "Log de l'esdeveniment de transferència de dades."
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__db_name
+msgid "Database Name"
+msgstr "Nom de la BD"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__date_end
+msgid "Date End"
+msgstr "Data de finalització"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__date_start
+msgid "Date Start"
+msgstr "Data d'inici"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__db_name
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__db_name
+msgid "Db Name"
+msgstr "Nom BD"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__db_password
+msgid "Db Password"
+msgstr "Contrasenya de la BD"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__db_user
+msgid "Db User"
+msgstr "Usuari de la BD"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__description
+msgid "Description"
+msgstr "Descripció"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__domain
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__domain
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_mixin__domain
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__domain
+msgid "Determines the records of the remote Odoo that will be migrated"
+msgstr "Determina els registres de l'Odoo remot que es migraran."
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__auto_id_mappings
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__auto_id_mappings
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__auto_id_mappings
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__auto_id_mappings
+msgid ""
+"Dictionaty with {old_id: new_id,} format for relational record matching. "
+"This has max. priority even using 'match_keys' method"
+msgstr ""
+"Diccionari amb el format {old_id: new_id,} per a la correspondència de "
+"registres relacionals. Té la màxima prioritat, fins i tot quan s'utilitza "
+"el mètode 'match_keys'."
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__display_name
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__display_name
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__display_name
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__display_name
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__display_name
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__display_name
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__display_name
+msgid "Display Name"
+msgstr "Nom mostrat"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__domain
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__domain
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_mixin__domain
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__domain
+msgid "Domain"
+msgstr "Domini"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log__state__error
+msgid "Error"
+msgstr "Error"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__error_msg
+msgid "Error Msg"
+msgstr "Missatge d'error"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__error_type
+msgid "Error Type"
+msgstr "Tipus d'error"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/wizards/odoo_xmlrpc_wrapper.py:0
+msgid "Error creating conection with remote Odoo. Bad Database\n"
+msgstr "Error en establir la connexió amb l'Odoo remot. BD incorrecta\n"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/wizards/odoo_xmlrpc_wrapper.py:0
+msgid "Error creating conection with remote Odoo. Bad URL:\n"
+msgstr "Error en establir la connexió amb l'Odoo remot. URL incorrecta:\n"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/wizards/odoo_xmlrpc_wrapper.py:0
+msgid "Error creating conection with remote Odoo. Bad Username or Password\n"
+msgstr ""
+"Error en establir la connexió amb l'Odoo remot. Nom d'usuari o contrasenya "
+"incorrectes.\n"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/models/odoo_data_transfer_template_mixin.py:0
+msgid ""
+"Error validating key matching fields of related remote '{rmodel}' model "
+"through '{rfield}' related field.\n"
+"\n"
+msgstr ""
+"Error en validar els camps de correspondència de claus del model remot "
+"relacionat '{rmodel}' mitjançant el camp relacionat '{rfield}'.\n"
+"\n"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/models/odoo_data_transfer_template_mixin.py:0
+msgid ""
+"Error validating remote {} model's fields:\n"
+"\n"
+msgstr ""
+"Error en validar els camps del model remot '{}':\n"
+"\n"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__migrate_failed
+msgid ""
+"Failed records won't be migrated by default for better automating. Mark "
+"this check after fixing the data to migrate failed records"
+msgstr ""
+"Per defecte, els registres fallits no es tornaran a migrar per facilitar "
+"l'automatització. Activeu aquesta opció després de corregir els errors per "
+"tornar a migrar els registres fallits."
+
+#. module: odoo_2_odoo_data_transfer
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_template_view_form
+msgid "Field Mappings"
+msgstr "Mapatge de camps"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__local_target_field_type
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__local_target_field_type
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__local_target_field_type
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__local_target_field_type
+msgid "Field Type"
+msgstr "Tipus de camp"
+
+#. module: odoo_2_odoo_data_transfer
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_log_form
+msgid "Field mappings"
+msgstr "Mapatge de camps"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_odoo_data_transfer_template_line
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_odoo_data_transfer_template_line_mixin
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_odoo_data_transfer_wizard_line
+msgid "Field mappings for a data transfer between Odoos"
+msgstr ""
+"Mapatge de camps per a una transferència de dades entre instàncies d'Odoo"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/models/odoo_data_transfer_template_mixin.py:0
+msgid ""
+"Field not found in remote Odoo: '{}'\n"
+"\n"
+msgstr ""
+"Camp no trobat a l'Odoo remot: '{}'\n"
+"\n"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__local_target_field_id
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__local_target_field_id
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__local_target_field_id
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__local_target_field_id
+msgid "Field of the local model where the data will be created / updated"
+msgstr "Camp del model local on es crearan o actualitzaran les dades"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__remote_source_field
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__remote_source_field
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__remote_source_field
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__remote_source_field
+msgid "Field of the remote model that will be transfered"
+msgstr "Camp del model remot que es transferirà"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_ir_model_fields
+msgid "Fields"
+msgstr "Camps"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__transfer_line_ids
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__transfer_line_ids
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_mixin__transfer_line_ids
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__transfer_line_ids
+msgid "Fields that will be transfered"
+msgstr "Camps que es transferiran"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__first_transferred_id
+msgid "First Transferred"
+msgstr "Primer transferit"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_odoo_data_transfer_wizard
+msgid "Generic wizard to transfer data between Odoos"
+msgstr "Assistent genèric per transferir dades entre instàncies d'Odoo"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__id
+msgid "ID"
+msgstr ""
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__id_mappings
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__id_mappings
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__id_mappings
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__id_mappings
+msgid "Id Mappings"
+msgstr "Mapatge d'IDs"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__local_identifier_field_id
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__local_identifier_field_id
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__local_identifier_field_id
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__local_identifier_field_id
+msgid ""
+"Identifier field to match local related records with remote ones. For each "
+"relared record the field value must be equal"
+msgstr ""
+"Camp identificador per fer coincidir els registres relacionats locals amb "
+"els remots. El valor del camp ha de ser igual per a cada registre "
+"relacionat."
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__remote_identifier_field
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__remote_identifier_field
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__remote_identifier_field
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__remote_identifier_field
+msgid ""
+"Identifier field to match remote related records with local ones. For each "
+"relared record the field value must be equal"
+msgstr ""
+"Camp identificador per fer coincidir els registres relacionats remots amb "
+"els locals. El valor del camp ha de ser igual per a cada registre "
+"relacionat."
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__is_failed_migration
+msgid "Is Failed Migration"
+msgstr "És una migració fallida"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__is_many2one_template
+msgid "Is Many2One Template"
+msgstr "És una plantilla Many2One"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__migration_lang
+msgid "Language"
+msgstr "Idioma"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__last_transferred_id
+msgid "Last Transferred"
+msgstr "Últim transferit"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__write_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__write_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__write_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__write_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__write_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__write_uid
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__write_uid
+msgid "Last Updated by"
+msgstr "Última actualització per"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__write_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__write_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__write_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__write_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__write_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__write_date
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualització el"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__local_identifier_field_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__local_identifier_field_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__local_identifier_field_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__local_identifier_field_id
+msgid "Local Record Identifier Field"
+msgstr "Camp identificador del registre local"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__local_target_field_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__local_target_field_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__local_target_field_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__local_target_field_id
+msgid "Local Target Field"
+msgstr "Camp de destinació local"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__local_target_model_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__local_target_model_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_mixin__local_target_model_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__local_target_model_id
+msgid "Local Target Model"
+msgstr "Model de destinació local"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__log_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__log_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__log_id
+msgid "Log"
+msgstr "Log"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__manual_id_mappings
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__manual_id_mappings
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__manual_id_mappings
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__manual_id_mappings
+msgid "Manual Id Mappings"
+msgstr "Mapatge manual d'ID"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log_field__relational_migration_method__map_ids
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line__relational_migration_method__map_ids
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line_mixin__relational_migration_method__map_ids
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_wizard_line__relational_migration_method__map_ids
+msgid "Map Ids"
+msgstr "Map Ids"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__is_many2one_template
+msgid ""
+"Mark this only if the template will be used inside other template to create "
+"a related record"
+msgstr ""
+"Marqueu aquesta opció només si la plantilla s'utilitzarà dins d'una altra "
+"plantilla per crear un registre relacionat."
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log_field__relational_migration_method__match_keys
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line__relational_migration_method__match_keys
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line_mixin__relational_migration_method__match_keys
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_wizard_line__relational_migration_method__match_keys
+msgid "Match Keys"
+msgstr "Coincidència de claus"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__record_limit
+msgid "Maximun number of records to migrate in the transference event"
+msgstr ""
+"Nombre màxim de registres que es poden migrar en l'esdeveniment de "
+"transferència"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__migrate_archived
+msgid "Migrate Archived"
+msgstr "Migrar els arxivats"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__migrate_failed
+msgid "Migrate Failed"
+msgstr "Migrar els fallits"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__migration_type
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__migration_type
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__migration_type
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__migration_type
+msgid "Migration Type"
+msgstr "Tipus de migració"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log_record__error_type__missing_error
+msgid "Missing Record"
+msgstr "Registre no trobat"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__model
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__model
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__model
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__model
+msgid "Model"
+msgstr "Model"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_odoo_data_transfer_template
+msgid "Model and field mappings for a data transfer between Odoos"
+msgstr ""
+"Mapatge de models i camps per a una transferència de dades entre instàncies "
+"d'Odoo"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__local_target_model_id
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__local_target_model_id
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_mixin__local_target_model_id
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__local_target_model_id
+msgid "Model of the current Odoo where the records will be created / updated"
+msgstr "Model de l'Odoo actual on es crearan o actualitzaran els registres"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__remote_source_model_name
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__remote_source_model_name
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_mixin__remote_source_model_name
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__remote_source_model_name
+msgid "Model of the remote Odoo whose records will be transfered"
+msgstr "Model de l'Odoo remot els registres del qual es transferiran"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_ir_model
+msgid "Models"
+msgstr "Models"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__db_name
+msgid "Name of the remote Odoo database."
+msgstr "Nom de la BD de l'Odoo remot."
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_wizard__state__new
+msgid "New"
+msgstr "Nou"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log_field__migration_type__normal
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line__migration_type__normal
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line_mixin__migration_type__normal
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_wizard_line__migration_type__normal
+msgid "Normal"
+msgstr "Normal"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.ui.menu,name:odoo_2_odoo_data_transfer.odoo_data_transfer_menu
+msgid "Odoo Data Transfer"
+msgstr "Transferència de dades d'Odoo"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.actions.act_window,name:odoo_2_odoo_data_transfer.odoo_data_transfer_log_action
+#: model:ir.ui.menu,name:odoo_2_odoo_data_transfer.odoo_data_transfer_log_submenu
+msgid "Odoo Data Transfer Logs"
+msgstr "Logs de transferència de dades d'Odoo"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.actions.act_window,name:odoo_2_odoo_data_transfer.odoo_data_transfer_template_action
+#: model:ir.ui.menu,name:odoo_2_odoo_data_transfer.odoo_data_transfer_template_submenu
+msgid "Odoo Data Transfer Templates"
+msgstr "Plantilles de transferència de dades d'Odoo"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.actions.act_window,name:odoo_2_odoo_data_transfer.odoo_data_transfer_wizard_action
+#: model:ir.ui.menu,name:odoo_2_odoo_data_transfer.odoo_data_transfer_wizard_submenu
+msgid "Odoo Data Transfer Wizard"
+msgstr "Assistent de transferència de dades d'Odoo"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log_record__error_type__ok
+msgid "Ok"
+msgstr ""
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log_field__migration_type__one2many
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line__migration_type__one2many
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line_mixin__migration_type__one2many
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_wizard_line__migration_type__one2many
+msgid "One2Many"
+msgstr ""
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__one2many_template_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__one2many_template_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__one2many_template_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__one2many_template_id
+msgid "One2Many Template"
+msgstr "Plantilla One2Many"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log_record__error_type__other_error
+msgid "Other Error"
+msgstr "Un altre error"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__record_limit
+msgid "Record Limit"
+msgstr "Límit de registres"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__record_pack_number
+msgid "Record Pack Number"
+msgstr "Número de registres per lot"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__record_total_counter
+msgid "Record Total Counter"
+msgstr "Comptador total de registres"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model,name:odoo_2_odoo_data_transfer.model_odoo_data_transfer_log_record
+msgid "Record transference log"
+msgstr "Log de transferència de registres"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__missing_error_record_ids
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_log_form
+msgid "Records with Missing Errors"
+msgstr "Registres amb errors de registre no trobat"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__other_error_record_ids
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_log_form
+msgid "Records with other errors"
+msgstr "Registres amb altres errors"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__related_model
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__related_model
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__related_model
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__related_model
+msgid "Related Model"
+msgstr "Model relacionat"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log_field__migration_type__relational
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line__migration_type__relational
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line_mixin__migration_type__relational
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_wizard_line__migration_type__relational
+msgid "Relational"
+msgstr "Relacional"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__relational_migration_method
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__relational_migration_method
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__relational_migration_method
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__relational_migration_method
+msgid "Relational Migration Method"
+msgstr "Mètode de migració relacional"
+
+#. module: odoo_2_odoo_data_transfer
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_template_view_form
+msgid "Remote Connection"
+msgstr "Connexió remota"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__remote_id
+msgid "Remote Record Id"
+msgstr "ID del registre remot"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__remote_identifier_field
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__remote_identifier_field
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__remote_identifier_field
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__remote_identifier_field
+msgid "Remote Record Identifier Field"
+msgstr "Camp identificador del registre remot"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__remote_source_field
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__remote_source_field
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__remote_source_field
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__remote_source_field
+msgid "Remote Source Field"
+msgstr "Camp d'origen remot"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__remote_source_model_name
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__remote_source_model_name
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_mixin__remote_source_model_name
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__remote_source_model_name
+msgid "Remote Source Model"
+msgstr "Model d'origen remot"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__skip_relational_errors
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__skip_relational_errors
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__skip_relational_errors
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__skip_relational_errors
+msgid "Skip Relational Errors"
+msgstr "Ometre els errors relacionals"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__state
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__state
+msgid "State"
+msgstr "Estat"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__transfer_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__transfer_id
+msgid "Template"
+msgstr "Plantilla"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__transfer_line_ids
+msgid "Template Lines"
+msgstr "Línies de la plantilla"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/models/odoo_data_transfer_template_mixin.py:0
+msgid "The '{}' model does not exist in the remote Odoo"
+msgstr "El model '{}' no existeix a l'Odoo remot"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/models/odoo_data_transfer_template_line.py:0
+msgid "The associated template lines can not be associated to more templates"
+msgstr ""
+"Les línies de plantilla associades no es poden associar a més plantilles"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/models/odoo_data_transfer_template.py:0
+msgid "The domain is bad formed: {}"
+msgstr "El domini té un format incorrecte: {}"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__transfer_id
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__transfer_id
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: odoo_2_odoo_data_transfer
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_template_view_form
+msgid "Transfer Configuration"
+msgstr "Configuració de la transferència"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__transfer_line_ids
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_mixin__transfer_line_ids
+msgid "Transfer Lines"
+msgstr "Línies de transferència"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log__state__transfered
+msgid "Transfered"
+msgstr "Transferit"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__transfered_field_ids
+msgid "Transfered Field"
+msgstr "Camp transferit"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__transfered_records_ids
+msgid "Transfered Records"
+msgstr "Registres transferits"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__transfered_records_counter
+msgid "Transfered Records Counter"
+msgstr "Comptador de registres transferits"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log__state__transfered_error
+msgid "Transfered with Errors"
+msgstr "Transferit amb errors"
+
+#. module: odoo_2_odoo_data_transfer
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_wizard_form
+msgid "Transference Fields"
+msgstr "Camps de transferència"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__transfer_line_ids
+msgid "Transference Lines"
+msgstr "Línies de transferència"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/models/odoo_data_transfer_log.py:0
+#: code:addons/odoo_2_odoo_data_transfer/wizards/odoo_data_transfer_wizard.py:0
+msgid "Transference Log"
+msgstr "Log de transferència"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/models/odoo_data_transfer_template_mixin.py:0
+msgid ""
+"Type incompatibility with remote Odoo field: '{fname} ({ftype})', and local "
+"field: '{lfname} ({lftype})'\n"
+"\n"
+msgstr ""
+"Incompatibilitat de tipus entre el camp de l'Odoo remot: '{fname} "
+"({ftype})' i el camp local: '{lfname} ({lftype})'\n"
+"\n"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__url
+msgid "URL of the remote Odoo instance."
+msgstr "URL de la instància remota d'Odoo."
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__url
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template__url
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__url
+msgid "Url"
+msgstr "Url"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__migration_lang
+msgid "Useful when migrating translated fields"
+msgstr "Útil per migrar camps traduïts"
+
+#. module: odoo_2_odoo_data_transfer
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_wizard_form
+msgid "Validate"
+msgstr "Valida"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_wizard__state__validated
+msgid "Validated"
+msgstr "Validat"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__warn_msg
+msgid "Warn Msg"
+msgstr "Missatge d'avís"
+
+#. module: odoo_2_odoo_data_transfer
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_template_view_form
+msgid "e.g. https://www.odoo.com"
+msgstr ""

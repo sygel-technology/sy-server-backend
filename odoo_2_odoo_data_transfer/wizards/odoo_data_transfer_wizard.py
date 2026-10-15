@@ -77,6 +77,8 @@ class OdooDataTransferWizard(models.TransientModel):
         for rec in self:
             rec.remote_source_model_name = rec.template_id.remote_source_model_name
             rec.local_target_model_id = rec.template_id.local_target_model_id.id
+            rec.url = rec.template_id.url or False
+            rec.db_name = rec.template_id.db_name or False
 
     def _change_template_id(self):
         for rec in self:

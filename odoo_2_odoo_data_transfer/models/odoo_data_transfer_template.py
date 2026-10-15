@@ -21,6 +21,13 @@ class OdooDataTransferTemplate(models.Model):
         help="Mark this only if the template will be used "
         "inside other template to create a related record"
     )
+    url = fields.Char(
+        help="URL of the remote Odoo instance.",
+    )
+    db_name = fields.Char(
+        string="Database Name",
+        help="Name of the remote Odoo database.",
+    )
 
     @api.constrains("domain")
     def _check_domain(self):

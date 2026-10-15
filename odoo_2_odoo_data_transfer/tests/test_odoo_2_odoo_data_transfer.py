@@ -56,11 +56,11 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
             )
         )
         wiz_form = Form(self.env["odoo.data.transfer.wizard"])
+        wiz_form.template_id = self.template_ok
         wiz_form.url = wiz_form.db_name = wiz_form.db_user = wiz_form.db_password = (
             "Foo"
         )
         wiz_form.record_limit = 10
-        wiz_form.template_id = self.template_ok
         wizard = wiz_form.save()
         wizard.action_validate()
         res = wizard.action_accept()
@@ -78,11 +78,11 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
             )
         )
         wiz_form = Form(self.env["odoo.data.transfer.wizard"])
+        wiz_form.template_id = self.template_validation_error
         wiz_form.url = wiz_form.db_name = wiz_form.db_user = wiz_form.db_password = (
             "Foo"
         )
         wiz_form.record_limit = 10
-        wiz_form.template_id = self.template_validation_error
         wizard = wiz_form.save()
         with self.assertRaises(ValidationError):
             wizard.action_validate()
@@ -97,11 +97,11 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
             )
         )
         wiz_form = Form(self.env["odoo.data.transfer.wizard"])
+        wiz_form.template_id = self.template_missing_error
         wiz_form.url = wiz_form.db_name = wiz_form.db_user = wiz_form.db_password = (
             "Foo"
         )
         wiz_form.record_limit = 10
-        wiz_form.template_id = self.template_missing_error
         wizard = wiz_form.save()
         wizard.action_validate()
         res = wizard.action_accept()
@@ -118,11 +118,11 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
             )
         )
         wiz_form = Form(self.env["odoo.data.transfer.wizard"])
+        wiz_form.template_id = self.template_one2many
         wiz_form.url = wiz_form.db_name = wiz_form.db_user = wiz_form.db_password = (
             "Foo"
         )
         wiz_form.record_limit = 1
-        wiz_form.template_id = self.template_one2many
         wizard = wiz_form.save()
         wizard.action_validate()
         wizard.transfer_line_ids.filtered(
@@ -143,11 +143,11 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
             )
         )
         wiz_form = Form(self.env["odoo.data.transfer.wizard"])
+        wiz_form.template_id = self.template_many2one
         wiz_form.url = wiz_form.db_name = wiz_form.db_user = wiz_form.db_password = (
             "Foo"
         )
         wiz_form.record_limit = 1
-        wiz_form.template_id = self.template_many2one
         wizard = wiz_form.save()
         wizard.action_validate()
         wizard.transfer_line_ids._compute_related_model()
@@ -167,24 +167,23 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
             )
         )
         wiz_form = Form(self.env["odoo.data.transfer.wizard"])
+        wiz_form.template_id = self.template_missing_error
         wiz_form.url = wiz_form.db_name = wiz_form.db_user = wiz_form.db_password = (
             "Foo"
         )
         wiz_form.record_limit = 10
-        wiz_form.template_id = self.template_missing_error
         wizard = wiz_form.save()
         wizard.action_validate()
         res = wizard.action_accept()
         log_id = self.env[res["res_model"]].browse(res["res_id"])
         attempted_records1 = log_id.mapped("missing_error_record_ids.remote_id")
-
         wiz_form = Form(self.env["odoo.data.transfer.wizard"])
+        wiz_form.template_id = self.template_ok
         wiz_form.url = wiz_form.db_name = wiz_form.db_user = wiz_form.db_password = (
             "Foo"
         )
         wiz_form.record_limit = 100
         wiz_form.migrate_failed = 1
-        wiz_form.template_id = self.template_ok
         wizard = wiz_form.save()
         wizard.action_validate()
         res = wizard.action_accept()

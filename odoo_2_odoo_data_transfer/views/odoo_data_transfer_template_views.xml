@@ -28,14 +28,24 @@
                         <field name="description" />
                     </group>
                     <group>
-                        <field name="remote_source_model_name" />
-                        <field
-                            name="local_target_model_id"
-                            options="{'no_create': True}"
-                            context="{'technical_display_name': True}"
-                        />
-                        <field name="domain" />
-                        <field name="is_many2one_template" />
+                        <group string="Remote Connection">
+                            <field
+                                name="url"
+                                widget="url"
+                                placeholder="e.g. https://www.odoo.com"
+                            />
+                            <field name="db_name" />
+                            <field name="remote_source_model_name" />
+                        </group>
+                        <group string="Transfer Configuration">
+                            <field
+                                name="local_target_model_id"
+                                options="{'no_create': True}"
+                                context="{'technical_display_name': True}"
+                            />
+                            <field name="domain" />
+                            <field name="is_many2one_template" />
+                        </group>
                     </group>
                     <group string="Field Mappings">
                         <field name="transfer_line_ids" nolabel="1" colspan="2" />
