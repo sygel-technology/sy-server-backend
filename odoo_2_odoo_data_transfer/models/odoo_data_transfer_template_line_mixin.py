@@ -226,10 +226,25 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
         return res
 
     def _parse_value(self, value, ids_map=False):
-        if not value:
+        if self.migration_type == "normal":
+            # Allow field migration between Odoo versions:
+            # integer to char (id -> ref) and boolean to integer
+            # (customer/supplier -> customer_rank/supplier_rank).
+            try:
+                if self.local_target_field_type == "char" and isinstance(value, int):
+                    return str(value)
+                if self.local_target_field_type == "integer" and isinstance(
+                    value, bool
+                ):
+                    return int(value)
+            except (TypeError, ValueError) as error:
+                raise ValueError(
+                    f"Error converting value {value!r} to "
+                    f"{self.local_target_field_type}"
+                ) from error
             return value
 
-        if self.migration_type == "normal":
+        if not value:
             return value
 
         if (

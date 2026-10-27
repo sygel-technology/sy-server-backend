@@ -4,3 +4,4 @@ Improvements proposed:
 - Add write mode
 - Match records by external id
 - Add smartbutton to see a list of migrated records in log
+- Add support for exporting and importing migration templates.
