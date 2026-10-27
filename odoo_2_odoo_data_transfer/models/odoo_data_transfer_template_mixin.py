@@ -81,14 +81,22 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
             return True
         equivalences = {
             "boolean": ("integer"),  # Bool
-            "char": ("text"),  # Str
+            "char": (
+                "text",
+                "integer",
+            ),  # Str // Include integer to migrate the id field to ref
             "binary": ("text"),  # Str
             "html": ("text", "char"),  # Str
             "text": ("char"),  # Str
             "selection": (),  # Str
             "date": ("datetime"),  # Str (especial)
             "datetime": ("date"),  # Str (especial)
-            "integer": ("float", "monetary", "many2one_reference"),  # Int
+            "integer": (
+                "float",
+                "monetary",
+                "many2one_reference",
+                "boolean",
+            ),  # Int // Include boolean to migrate customer_rank and supplier_rank
             "float": ("monetary", "integer"),  # Float
             "monetary": ("float", "integer"),  # Float
             "many2many": (),  # [int1...intN]
