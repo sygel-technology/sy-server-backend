@@ -23,7 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [base_old_migration_fields](base_old_migration_fields/) | 18.0.1.0.0 |  | Base Old Migration Fields
 [file_download](file_download/) | 18.0.1.0.0 |  | Download file
-[odoo_2_odoo_data_transfer](odoo_2_odoo_data_transfer/) | 18.0.1.0.0 |  | Generic tools to manage data transfer between Odoos
+[odoo_2_odoo_data_transfer](odoo_2_odoo_data_transfer/) | 18.0.1.1.0 |  | Generic tools to manage data transfer between Odoos
 
 [//]: # (end addons)
 
