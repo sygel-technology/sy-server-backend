@@ -192,3 +192,25 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
         self.assertEqual(log_id.transfered_records_counter, 10)
         attempted_records2 = log_id.mapped("transfered_records_ids.remote_id")
         self.assertEqual(attempted_records1, attempted_records2)
+
+    def test_parse_value_conversions(self):
+        TemplateLine = self.env["odoo.data.transfer.template.line"]
+        test_cases = [
+            ("char", False, False, bool),
+            ("char", True, True, bool),
+            ("char", 123, "123", str),
+            ("char", "test@example.com", "test@example.com", str),
+            ("integer", True, 1, int),
+            ("integer", False, 0, int),
+        ]
+        for field_type, value, expected, expected_type in test_cases:
+            with self.subTest(field_type=field_type, value=value):
+                line = TemplateLine.new(
+                    {
+                        "migration_type": "normal",
+                        "local_target_field_type": field_type,
+                    }
+                )
+                result = line._parse_value(value)
+                self.assertEqual(result, expected)
+                self.assertIs(type(result), expected_type)

@@ -230,8 +230,14 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
             # Allow field migration between Odoo versions:
             # integer to char (id -> ref) and boolean to integer
             # (customer/supplier -> customer_rank/supplier_rank).
+            # Exclude booleans from integer-to-char conversion to prevent
+            # empty fields (False) from being stored as the string "False".
             try:
-                if self.local_target_field_type == "char" and isinstance(value, int):
+                if (
+                    self.local_target_field_type == "char"
+                    and isinstance(value, int)
+                    and not isinstance(value, bool)
+                ):
                     return str(value)
                 if self.local_target_field_type == "integer" and isinstance(
                     value, bool
