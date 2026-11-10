@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 =========================
 Odoo 2 Odoo Data Transfer
 =========================
@@ -17,7 +13,7 @@ Odoo 2 Odoo Data Transfer
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-sygel--technology%2Fsy--server--backend-lightgray.png?logo=github
@@ -240,6 +236,8 @@ Improvements proposed:
 - Match records by external id
 - Add smartbutton to see a list of migrated records in log
 - Add support for exporting and importing migration templates.
+- Improve migration progress tracking to allow transferring records with
+  IDs lower than the last transferred ID without deleting transfer logs.
 
 Bug Tracker
 ===========
