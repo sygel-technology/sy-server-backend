@@ -214,3 +214,33 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
                 result = line._parse_value(value)
                 self.assertEqual(result, expected)
                 self.assertIs(type(result), expected_type)
+
+    def test_autocalculate_id_mappings_integer_to_char(self):
+        partner = self.env["res.partner"].create(
+            {
+                "name": "Test Parent Company",
+                "ref": "297682",
+                "is_company": True,
+            }
+        )
+        line = mock.Mock()
+        line.related_model = "res.partner"
+        line.remote_identifier_field = "id"
+        line.local_identifier_field_id.name = "ref"
+        line.local_identifier_field_id.ttype = "char"
+        line._get_id_mappings.side_effect = lambda mappings: mappings
+        wrapper = mock.Mock()
+        wrapper.search_read.return_value = [{"id": 297682}]
+        wrapper.fields_get.return_value = {"id": {"type": "integer"}}
+        with mock.patch.object(
+            type(self.env["odoo.data.transfer.wizard"]),
+            "_get_related_remote_model",
+            return_value="res.partner",
+        ):
+            mappings = self.env["odoo.data.transfer.wizard"]._autocalculate_id_mappings(
+                wrapper, line
+            )
+        self.assertEqual(mappings, {297682: partner.id})
+        line.write.assert_called_once_with(
+            {"auto_id_mappings": str({297682: partner.id})}
+        )

@@ -116,9 +116,19 @@ class OdooDataTransferWizard(models.TransientModel):
         local_model_recs = self.env[tmpl_line.related_model].search_read(
             [], [loc_model_key_name]
         )
+        # Check whether the remote identifier needs to be converted to a string
+        # to compare source Integer fields with destination Char fields.
+        remote_field_type = wrapper.fields_get(rem_model, [rem_model_key_name])[
+            rem_model_key_name
+        ]["type"]
+        local_field_type = tmpl_line.local_identifier_field_id.ttype
+        convert_to_char = remote_field_type == "integer" and local_field_type == "char"
         # Group remote ids by key
         for rem_rec in rem_model_recs:
-            ids_grouped_dict[rem_rec[rem_model_key_name]] = [rem_rec["id"], False]
+            key = rem_rec[rem_model_key_name]
+            if convert_to_char and isinstance(key, int) and not isinstance(key, bool):
+                key = str(key)
+            ids_grouped_dict[key] = [rem_rec["id"], False]
         # Add local ids to agrupation by key
         for local_rec in local_model_recs:
             key = local_rec[loc_model_key_name]

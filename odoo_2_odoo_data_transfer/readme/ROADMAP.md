@@ -5,3 +5,4 @@ Improvements proposed:
 - Match records by external id
 - Add smartbutton to see a list of migrated records in log
 - Add support for exporting and importing migration templates.
+- Improve migration progress tracking to allow transferring records with IDs lower than the last transferred ID without deleting transfer logs.
