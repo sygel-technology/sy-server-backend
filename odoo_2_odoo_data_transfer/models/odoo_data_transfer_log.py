@@ -41,12 +41,13 @@ class OdooDataTransferTemplateLog(models.Model):
         comodel_name="odoo.data.transfer.log.field",
         inverse_name="log_id",
     )
-
     transfered_records_ids = fields.One2many(
         string="Transfered Records",
         comodel_name="odoo.data.transfer.log.record",
         inverse_name="log_id",
-        domain=["|", ("error_type", "=", False), ("error_type", "=", "ok")],
+        domain=[
+            ("error_type", "in", [False, "ok", "migrated_with_exceptions"]),
+        ],
     )
     missing_error_record_ids = fields.One2many(
         string="Records with Missing Errors",
@@ -59,6 +60,12 @@ class OdooDataTransferTemplateLog(models.Model):
         comodel_name="odoo.data.transfer.log.record",
         inverse_name="log_id",
         domain=[("error_type", "=", "other_error")],
+    )
+    migrated_with_exceptions_record_ids = fields.One2many(
+        string="Migrated with Exceptions",
+        comodel_name="odoo.data.transfer.log.record",
+        inverse_name="log_id",
+        domain=[("error_type", "=", "migrated_with_exceptions")],
     )
     transfered_records_counter = fields.Integer(
         compute="_compute_transfered_records_counter",

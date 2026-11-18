@@ -3,6 +3,7 @@
 
 from unittest import mock
 
+from odoo import _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import Form, TransactionCase
 
@@ -244,3 +245,121 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
         line.write.assert_called_once_with(
             {"auto_id_mappings": str({297682: partner.id})}
         )
+
+    def test_retry_with_empty_value(self):
+        wiz_form = Form(self.env["odoo.data.transfer.wizard"])
+        wiz_form.template_id = self.template_ok
+        wiz_form.url = wiz_form.db_name = wiz_form.db_user = wiz_form.db_password = (
+            "Foo"
+        )
+        wizard = wiz_form.save()
+
+        vat_field = self.env["ir.model.fields"]._get("res.partner", "vat")
+        wizard.transfer_line_ids = [
+            (
+                0,
+                0,
+                {
+                    "remote_source_field": "vat",
+                    "local_target_field_id": vat_field.id,
+                    "retry_with_empty_value": True,
+                },
+            )
+        ]
+
+        record_dict = {
+            "id": 12345,
+            "name": "Test Partner",
+            "vat": "INVALID_VAT",
+        }
+
+        def mock_create_record(values, **kwargs):
+            if values["vat"]:
+                raise ValidationError(_("Invalid VAT"))
+            return self.env["res.partner"].create({"name": values["name"]})
+
+        with mock.patch.object(
+            type(wizard),
+            "_create_record",
+            side_effect=mock_create_record,
+        ) as mocked_create:
+            record, warning = wizard._create_record_with_retry(record_dict)
+
+        self.assertEqual(mocked_create.call_count, 2)
+        self.assertTrue(record.exists())
+        self.assertEqual(record.name, "Test Partner")
+        self.assertEqual(record_dict["vat"], "INVALID_VAT")
+        self.assertEqual(warning["error_msg"], "Invalid VAT")
+        self.assertEqual(warning["cleared_fields"], "vat")
+
+    def test_retry_with_empty_value_migrated_with_exceptions(self):
+        wiz_form = Form(self.env["odoo.data.transfer.wizard"])
+        wiz_form.template_id = self.template_ok
+        wiz_form.url = wiz_form.db_name = wiz_form.db_user = wiz_form.db_password = (
+            "Foo"
+        )
+        wizard = wiz_form.save()
+        vat_field = self.env["ir.model.fields"]._get("res.partner", "vat")
+        wizard.transfer_line_ids = [
+            (
+                0,
+                0,
+                {
+                    "remote_source_field": "vat",
+                    "local_target_field_id": vat_field.id,
+                    "retry_with_empty_value": True,
+                },
+            )
+        ]
+        log = self.env["odoo.data.transfer.log"].create(
+            {
+                "url": "Foo",
+                "db_name": "Foo",
+                "local_target_model_id": self.template_ok.local_target_model_id.id,
+                "remote_source_model_name": self.template_ok.remote_source_model_name,
+            }
+        )
+        wizard.log_id = log
+        record_dict = {
+            "id": 12345,
+            "name": "Test Partner",
+            "vat": "INVALID_VAT",
+        }
+
+        def mock_create_record(values, **kwargs):
+            if values["vat"]:
+                raise ValidationError(_("Invalid VAT"))
+            return self.env["res.partner"].create({"name": values["name"]})
+
+        with mock.patch.object(
+            type(wizard),
+            "_create_record",
+            side_effect=mock_create_record,
+        ):
+            wizard.create_record(record_dict)
+        self.assertEqual(len(log.transfered_records_ids), 1)
+        self.assertEqual(len(log.migrated_with_exceptions_record_ids), 1)
+        self.assertEqual(log.transfered_records_counter, 1)
+        transferred_record = log.transfered_records_ids
+        self.assertEqual(transferred_record.remote_id, 12345)
+        self.assertEqual(
+            log.migrated_with_exceptions_record_ids,
+            transferred_record,
+        )
+        self.assertEqual(transferred_record.error_type, "migrated_with_exceptions")
+        self.assertEqual(transferred_record.error_msg, "Invalid VAT")
+        self.assertEqual(transferred_record.cleared_fields, "vat")
+        self.assertFalse(log.missing_error_record_ids)
+        self.assertFalse(log.other_error_record_ids)
+
+    def test_retry_with_empty_value_boolean_constraint(self):
+        active_field = self.env["ir.model.fields"]._get("res.partner", "active")
+        with self.assertRaises(ValidationError):
+            self.env["odoo.data.transfer.template.line"].create(
+                {
+                    "transfer_id": self.template_ok.id,
+                    "remote_source_field": "active",
+                    "local_target_field_id": active_field.id,
+                    "retry_with_empty_value": True,
+                }
+            )

@@ -8,6 +8,7 @@ ERROR_TYPES = [
     ("already_transfered", "Already Transfered"),
     ("missing_error", "Missing Record"),
     ("other_error", "Other Error"),
+    ("migrated_with_exceptions", "Migrated with Exceptions"),
 ]
 
 
@@ -29,3 +30,4 @@ class OdooDataTransferTemplateLogRecord(models.Model):
     )
     error_type = fields.Selection(ERROR_TYPES)
     error_msg = fields.Char()
+    cleared_fields = fields.Char()

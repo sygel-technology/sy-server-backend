@@ -84,6 +84,18 @@
                                 />
                             </group>
                         </page>
+                        <page
+                            name="migrated_with_exceptions"
+                            string="Migrated with Exceptions"
+                        >
+                            <group>
+                                <field
+                                    name="migrated_with_exceptions_record_ids"
+                                    nolabel="1"
+                                    colspan="2"
+                                />
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
             </form>

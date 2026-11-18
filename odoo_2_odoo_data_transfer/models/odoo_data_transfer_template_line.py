@@ -4,6 +4,10 @@
 
 from odoo import _, api, exceptions, fields, models
 
+from .odoo_data_transfer_template_line_mixin import (
+    RETRY_WITH_EMPTY_VALUE_FIELD_TYPES,
+)
+
 
 class OdooDataTransferTemplateLine(models.Model):
     _name = "odoo.data.transfer.template.line"
@@ -34,3 +38,23 @@ class OdooDataTransferTemplateLine(models.Model):
                         " be associated to more templates"
                     )
                 )
+
+    @api.constrains("retry_with_empty_value", "local_target_field_id")
+    def _check_retry_with_empty_value(self):
+        if self.filtered(
+            lambda line: (
+                line.retry_with_empty_value
+                and (
+                    not line.local_target_field_id
+                    or line.local_target_field_id.required
+                    or line.local_target_field_id.ttype
+                    not in RETRY_WITH_EMPTY_VALUE_FIELD_TYPES
+                )
+            )
+        ):
+            raise exceptions.ValidationError(
+                _(
+                    "Retry with empty value is not allowed for required "
+                    "fields or incompatible field types."
+                )
+            )
