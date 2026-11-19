@@ -26,6 +26,10 @@
                 <group invisible="not error_type">
                     <field name="error_type" invisible="1" />
                     <field name="error_msg" />
+                    <field
+                        name="cleared_fields"
+                        invisible="error_type != 'migrated_with_exceptions'"
+                    />
                 </group>
             </form>
         </field>

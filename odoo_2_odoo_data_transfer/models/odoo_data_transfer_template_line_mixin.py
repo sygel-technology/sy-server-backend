@@ -5,6 +5,16 @@
 from odoo import _, api, exceptions, fields, models
 from odoo.tools.safe_eval import safe_eval
 
+RETRY_WITH_EMPTY_VALUE_FIELD_TYPES = (
+    "char",
+    "text",
+    "html",
+    "many2one",
+    "selection",
+    "date",
+    "datetime",
+)
+
 
 class OdooDataTransferTemplateLineMixin(models.AbstractModel):
     _name = "odoo.data.transfer.template.line.mixin"
@@ -43,6 +53,12 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
         default="match_keys",
     )
     skip_relational_errors = fields.Boolean()
+    retry_with_empty_value = fields.Boolean(
+        help=(
+            "If a validation error occurs during migration, "
+            "retry the record with this field set to an empty value."
+        ),
+    )
     remote_identifier_field = fields.Char(
         string="Remote Record Identifier Field",
         help="Identifier field to match remote related records with local ones. "
@@ -118,6 +134,7 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
                 "relational_migration_method": line.relational_migration_method,
                 "related_model": line.related_model,
                 "skip_relational_errors": line.skip_relational_errors,
+                "retry_with_empty_value": line.retry_with_empty_value,
                 "remote_identifier_field": line.remote_identifier_field,
                 "local_identifier_field_id": line.local_identifier_field_id.id,
                 "manual_id_mappings": line.manual_id_mappings,

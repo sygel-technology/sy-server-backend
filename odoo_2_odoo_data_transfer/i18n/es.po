@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-15 13:47+0000\n"
-"PO-Revision-Date: 2026-10-15 15:49+0200\n"
+"POT-Creation-Date: 2026-11-19 12:41+0000\n"
+"PO-Revision-Date: 2026-11-19 13:42+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #. module: odoo_2_odoo_data_transfer
 #: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_wizard_form
@@ -44,6 +44,11 @@ msgstr "Campos básicos para una transferencia de datos entre odoos"
 #: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_wizard_form
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_record__cleared_fields
+msgid "Cleared Fields"
+msgstr "Campos vaciados"
 
 #. module: odoo_2_odoo_data_transfer
 #. odoo-python
@@ -157,6 +162,8 @@ msgid ""
 "Dictionaty with {old_id: new_id,} format for relational record matching. "
 "This has max. priority even using 'match_keys' method"
 msgstr ""
+"Diccionario con formato {old_id: new_id} para relacionar registros. Tiene "
+"prioridad máxima, incluso cuando se utiliza el método 'match_keys'."
 
 #. module: odoo_2_odoo_data_transfer
 #: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__display_name
@@ -364,6 +371,24 @@ msgstr ""
 "locales. Para cada registro relacionado el valor debe ser el mismo"
 
 #. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__retry_with_empty_value
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__retry_with_empty_value
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__retry_with_empty_value
+#: model:ir.model.fields,help:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__retry_with_empty_value
+msgid ""
+"If a validation error occurs during migration, retry the record with this "
+"field set to an empty value."
+msgstr ""
+"Si se produce un error de validación durante la migración, se volverá a "
+"intentar importar el registro con este campo vacío."
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/tests/test_odoo_2_odoo_data_transfer.py:0
+msgid "Invalid VAT"
+msgstr ""
+
+#. module: odoo_2_odoo_data_transfer
 #: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__is_failed_migration
 msgid "Is Failed Migration"
 msgstr "Es migración de fallidos"
@@ -485,6 +510,13 @@ msgid "Migrate Failed"
 msgstr "Migrar fallidos"
 
 #. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log__migrated_with_exceptions_record_ids
+#: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_log_record__error_type__migrated_with_exceptions
+#: model_terms:ir.ui.view,arch_db:odoo_2_odoo_data_transfer.odoo_data_transfer_log_form
+msgid "Migrated with Exceptions"
+msgstr "Migrados con excepciones"
+
+#. module: odoo_2_odoo_data_transfer
 #: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__migration_type
 #: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__migration_type
 #: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__migration_type
@@ -553,7 +585,7 @@ msgstr "Nuevo"
 #: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_template_line_mixin__migration_type__normal
 #: model:ir.model.fields.selection,name:odoo_2_odoo_data_transfer.selection__odoo_data_transfer_wizard_line__migration_type__normal
 msgid "Normal"
-msgstr "Normal"
+msgstr ""
 
 #. module: odoo_2_odoo_data_transfer
 #: model:ir.ui.menu,name:odoo_2_odoo_data_transfer.odoo_data_transfer_menu
@@ -693,6 +725,24 @@ msgstr "Campo origen remoto"
 #: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard__remote_source_model_name
 msgid "Remote Source Model"
 msgstr "Modelo origen remoto"
+
+#. module: odoo_2_odoo_data_transfer
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__retry_with_empty_value
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line__retry_with_empty_value
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_template_line_mixin__retry_with_empty_value
+#: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_wizard_line__retry_with_empty_value
+msgid "Retry With Empty Value"
+msgstr "Importar con valor vacío"
+
+#. module: odoo_2_odoo_data_transfer
+#. odoo-python
+#: code:addons/odoo_2_odoo_data_transfer/models/odoo_data_transfer_template_line.py:0
+msgid ""
+"Retry with empty value is not allowed for required fields or incompatible "
+"field types."
+msgstr ""
+"No se permite importar con valor vacío en campos obligatorios o de tipos "
+"incompatibles."
 
 #. module: odoo_2_odoo_data_transfer
 #: model:ir.model.fields,field_description:odoo_2_odoo_data_transfer.field_odoo_data_transfer_log_field__skip_relational_errors

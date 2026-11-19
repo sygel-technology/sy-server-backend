@@ -44,6 +44,10 @@
                     />
                     <field name="local_target_field_type" />
                     <field name="migration_type" invisible="1" />
+                    <field
+                        name="retry_with_empty_value"
+                        invisible="local_target_field_type not in ('char', 'text', 'html', 'many2one', 'selection', 'date', 'datetime')"
+                    />
                 </group>
                 <group invisible="migration_type != 'relational'">
                     <field

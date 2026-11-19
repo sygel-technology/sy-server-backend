@@ -8,6 +8,9 @@ import traceback
 from odoo import _, api, exceptions, fields, models
 from odoo.tools.safe_eval import safe_eval
 
+from ..models.odoo_data_transfer_template_line_mixin import (
+    RETRY_WITH_EMPTY_VALUE_FIELD_TYPES,
+)
 from .odoo_xmlrpc_wrapper import OdooXmlrpcWrapper
 
 
@@ -158,7 +161,9 @@ class OdooDataTransferWizard(models.TransientModel):
         """
         try:
             with self.env.cr.savepoint():
-                record_id = self._create_record(record_dict, **ids_map_map)
+                record_id, warning = self._create_record_with_retry(
+                    record_dict, **ids_map_map
+                )
                 self.log_id.write(
                     {
                         "transfered_records_ids": [
@@ -168,6 +173,15 @@ class OdooDataTransferWizard(models.TransientModel):
                                 {
                                     "remote_id": record_dict["id"],
                                     "local_id": f"{record_id._name},{record_id.id}",
+                                    "error_type": (
+                                        "migrated_with_exceptions" if warning else "ok"
+                                    ),
+                                    "error_msg": warning["error_msg"]
+                                    if warning
+                                    else False,
+                                    "cleared_fields": (
+                                        warning["cleared_fields"] if warning else False
+                                    ),
                                 },
                             )
                         ]
@@ -208,6 +222,38 @@ class OdooDataTransferWizard(models.TransientModel):
             # logging.error(e)
             # logging.error(f"dict_vals: {record_dict}")
             traceback.print_exc()
+
+    def _create_record_with_retry(self, record_dict, **ids_map_map):
+        warning = False
+        try:
+            with self.env.cr.savepoint():
+                record = self._create_record(record_dict, **ids_map_map)
+        except (exceptions.ValidationError, exceptions.MissingError) as error:
+            retry_lines = self.transfer_line_ids.filtered(
+                lambda line: (
+                    line.retry_with_empty_value
+                    and not line.local_target_field_id.required
+                    and line.local_target_field_id.ttype
+                    in RETRY_WITH_EMPTY_VALUE_FIELD_TYPES
+                    and record_dict.get(line.remote_source_field)
+                )
+            )
+            if not retry_lines:
+                raise
+            # Remove the selected fields from the remote data.
+            retry_record_dict = record_dict.copy()
+            for line in retry_lines:
+                retry_record_dict[line.remote_source_field] = False
+            # Retry the migration with the selected fields empty.
+            with self.env.cr.savepoint():
+                record = self._create_record(retry_record_dict, **ids_map_map)
+            warning = {
+                "error_msg": str(error),
+                "cleared_fields": ", ".join(
+                    retry_lines.mapped("local_target_field_id.name")
+                ),
+            }
+        return record, warning
 
     def _create_logs(self):
         res = self.env["odoo.data.transfer.log"].create(
