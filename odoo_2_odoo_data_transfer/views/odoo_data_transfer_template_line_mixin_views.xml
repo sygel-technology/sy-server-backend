@@ -49,6 +49,15 @@
                         invisible="local_target_field_type not in ('char', 'text', 'html', 'many2one', 'selection', 'date', 'datetime')"
                     />
                 </group>
+                <group invisible="migration_type != 'normal'">
+                    <div class="o_td_label">
+                        <label for="value_mapping" />
+                        <div class="text-muted">
+                            <small>Format: {source_value: target_value}</small>
+                        </div>
+                    </div>
+                    <field name="value_mapping" nolabel="1" />
+                </group>
                 <group invisible="migration_type != 'relational'">
                     <field
                         name="related_model"

@@ -1,6 +1,6 @@
 # Copyright 2025 Alberto Martínez <alberto.martinez@sygel.es>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-
+from ast import literal_eval
 
 from odoo import _, api, exceptions, fields, models
 from odoo.tools.safe_eval import safe_eval
@@ -82,6 +82,15 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
     manual_id_mappings = fields.Text(
         default="{}",
     )
+    value_mapping = fields.Text(
+        default="{}",
+        help=(
+            "Dictionary that maps source field values to target field values. "
+            "Each key represents a value from the source Odoo version, "
+            "and its corresponding value represents the value in the target "
+            "Odoo version."
+        ),
+    )
     id_mappings = fields.Text(compute="_compute_id_mappings")
     one2many_template_id = fields.Many2one(
         string="One2Many Template",
@@ -139,6 +148,7 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
                 "local_identifier_field_id": line.local_identifier_field_id.id,
                 "manual_id_mappings": line.manual_id_mappings,
                 "one2many_template_id": line.one2many_template_id.id,
+                "value_mapping": line.value_mapping,
             }
             vals.update(def_vals)
             res.append((0, 0, vals))
@@ -244,6 +254,18 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
 
     def _parse_value(self, value, ids_map=False):
         if self.migration_type == "normal":
+            try:
+                mapping = literal_eval(self.value_mapping or "{}")
+                if mapping and value not in mapping:
+                    raise exceptions.ValidationError(
+                        _("No value mapping found for '%s'.") % value
+                    )
+                if mapping:
+                    value = mapping[value]
+            except (ValueError, SyntaxError, TypeError) as error:
+                raise exceptions.ValidationError(
+                    _("Invalid value mapping configuration.")
+                ) from error
             # Allow field migration between Odoo versions:
             # integer to char (id -> ref) and boolean to integer
             # (customer/supplier -> customer_rank/supplier_rank).
@@ -296,3 +318,18 @@ class OdooDataTransferTemplateLineMixin(models.AbstractModel):
                 "Data transfer template line can not be proccesed. "
                 "The parse function is not defined."
             )
+
+    @api.constrains("value_mapping")
+    def _check_value_mapping(self):
+        for line in self:
+            try:
+                mapping = literal_eval(line.value_mapping or "{}")
+            except (ValueError, SyntaxError, TypeError) as error:
+                raise exceptions.ValidationError(
+                    _("Invalid value mapping configuration.")
+                ) from error
+
+            if not isinstance(mapping, dict):
+                raise exceptions.ValidationError(
+                    _("Value mapping must be a dictionary.")
+                )
