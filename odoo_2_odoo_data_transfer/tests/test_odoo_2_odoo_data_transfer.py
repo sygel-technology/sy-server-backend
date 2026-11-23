@@ -363,3 +363,58 @@ class TestOdoo2OdooDataTransfer(TransactionCase):
                     "retry_with_empty_value": True,
                 }
             )
+
+    def test_parse_value_mapping(self):
+        TemplateLine = self.env["odoo.data.transfer.template.line"]
+        test_cases = [
+            ("selection", "pending", "draft", '{"pending": "draft"}'),
+            ("boolean", "yes", True, '{"yes": True, "no": False}'),
+            ("boolean", "no", False, '{"yes": True, "no": False}'),
+            ("selection", True, "enabled", '{True: "enabled", False: "disabled"}'),
+            ("selection", False, "disabled", '{True: "enabled", False: "disabled"}'),
+        ]
+        for field_type, value, expected, mapping in test_cases:
+            with self.subTest(field_type=field_type, value=value):
+                line = TemplateLine.new(
+                    {
+                        "migration_type": "normal",
+                        "local_target_field_type": field_type,
+                        "value_mapping": mapping,
+                    }
+                )
+                result = line._parse_value(value)
+                self.assertEqual(result, expected)
+                self.assertIs(type(result), type(expected))
+
+    def test_value_mapping_constraint(self):
+        TemplateLine = self.env["odoo.data.transfer.template.line"]
+        invalid_mappings = [
+            '["pending", "draft"]',
+            '"pending"',
+            '{"pending": "draft"',
+            '{"pending": str(123)}',
+        ]
+        for mapping in invalid_mappings:
+            with self.subTest(mapping=mapping):
+                with self.assertRaises(ValidationError):
+                    TemplateLine.create(
+                        {
+                            "transfer_id": self.template_ok.id,
+                            "remote_source_field": "name",
+                            "local_target_field_id": self.env["ir.model.fields"]
+                            ._get("res.partner", "name")
+                            .id,
+                            "value_mapping": mapping,
+                        }
+                    )
+
+    def test_parse_value_mapping_missing_value(self):
+        line = self.env["odoo.data.transfer.template.line"].new(
+            {
+                "migration_type": "normal",
+                "local_target_field_type": "selection",
+                "value_mapping": '{"pending": "draft"}',
+            }
+        )
+        with self.assertRaisesRegex(ValidationError, "No value mapping found"):
+            line._parse_value("completed")

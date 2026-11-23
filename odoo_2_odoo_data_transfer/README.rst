@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 =========================
 Odoo 2 Odoo Data Transfer
 =========================
@@ -17,7 +13,7 @@ Odoo 2 Odoo Data Transfer
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-sygel--technology%2Fsy--server--backend-lightgray.png?logo=github
@@ -107,6 +103,14 @@ transference will be more complex and you will have to fill more data:
   "One2Many Template" field with another data transfer template for the
   related model, that second transfer template should have the "Is
   Many2One Template" boolean field set as true.
+
+- You can use the **Value Mapping** field to map values between the
+  source and target Odoo versions, including fields with different
+  types, such as Selection and Boolean. The mapping must be a Python
+  dictionary in the format ``{source_value: target_value}``. For
+  example, ``{"pending": "draft", "completed": "done"}`` maps the source
+  values to their corresponding target values. If a source value is not
+  defined in the mapping, a validation error will be raised.
 
 Import / export data transfer templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

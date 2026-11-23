@@ -27,6 +27,7 @@ If the field types are relational (many2one, many2many, one2many) the transferen
 
 -  If the related field has one2many type, there is usually a strong dependency between the fields, and in this case we have to create the records of the related model at the same time. For example, if you are transferring posted invoices, you will have to transfer its invoice lines at the same time. In order to do that, you have to fill the "One2Many Template" field with another data transfer template for the related model, that second transfer template should have the "Is Many2One Template" boolean field set as true.
 
+- You can use the **Value Mapping** field to map values between the source and target Odoo versions, including fields with different types, such as Selection and Boolean. The mapping must be a Python dictionary in the format `{source_value: target_value}`. For example, `{"pending": "draft", "completed": "done"}` maps the source values to their corresponding target values. If a source value is not defined in the mapping, a validation error will be raised.
 
 #### Import / export data transfer templates
 
